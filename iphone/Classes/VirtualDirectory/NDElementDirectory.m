@@ -21,6 +21,7 @@
 #import "errorcodes.h"
 #import "NDAttribute.h"
 #import "NDElement.h"
+#import "NDTouch.h"
 #import "NDElementStore.h"
 #import "NSException+WebDriver.h"
 #import "WebDriverResource.h"
@@ -132,6 +133,8 @@
 
     [self setResource:[NDAttribute attributeForElement:element_]
              withName:@"attribute"];
+      
+    
   }
   return self;
 }

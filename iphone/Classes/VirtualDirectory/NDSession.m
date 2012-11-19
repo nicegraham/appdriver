@@ -64,6 +64,9 @@
 
     [self setResource:[NDTimeouts timeoutsWithSession:self]
              withName:@"timeouts"];
+      
+      [self setResource:[NDTouch touchForElement:elementStore_]
+             withName:@"touch"];
   }
   return self;
 }

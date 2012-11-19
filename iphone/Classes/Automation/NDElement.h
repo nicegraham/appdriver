@@ -58,6 +58,9 @@ extern NSString *kByXpath;
 // Simulate a click on the element.
 - (void)click;
 
+// Simulate a touch on the element.
+- (void)touch;
+
 // Finds elements inside this element. Returns an array of |NDElement|.
 - (NSArray *)findElementsBy:(NSString *)by
                       value:(NSString *)value

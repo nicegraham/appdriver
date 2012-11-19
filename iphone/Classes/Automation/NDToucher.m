@@ -18,6 +18,7 @@
 
 #import "NDToucher.h"
 #import "TouchSynthesis.h"
+//#import "/Users/dgrace/Documents/github/PublicAutomation/PublicAutomation/UIAutomationBridge.h"
 
 @interface NDToucher ()
 
@@ -30,6 +31,7 @@
 
 // Sends touch event to specified view.
 + (void)touch:(UIView *)view {
+    printf("*************************** - in touch\n");
   NDToucher *toucher = [[[NDToucher alloc] init] autorelease];
   [toucher performSelectorOnMainThread:@selector(performTouch:)
                             withObject:view
@@ -39,7 +41,9 @@
 // Sends touch event to specified view. This method should be executed on main
 // thread.
 - (void)performTouch:(UIView *)view {
-  // Make the view visible.
+    printf("*************************** - in performTouch\n");
+    
+    // Make the view visible.
   [self scrollToVisible:view];
 
   // Create touch event for the view. Note [touch view] has the topmost element
@@ -63,7 +67,8 @@
 
 // Scroll the |UIScrollView|s to display |view| on the screen.
 - (void)scrollToVisible:(UIView *)view {
-  UIView *parent = [view superview];
+    printf("*************************** - in scrollToVisible\n");
+    UIView *parent = [view superview];
   while (parent) {
     if ([parent isKindOfClass:[UIScrollView class]]) {
       UIScrollView *scrollView = (UIScrollView *)parent;

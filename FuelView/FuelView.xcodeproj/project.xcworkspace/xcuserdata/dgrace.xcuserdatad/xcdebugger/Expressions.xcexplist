@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[RESTServiceMapping httpResponseForRequest:]:RESTServiceMapping.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[WebDriverResource initWithTarget:GETAction:POSTAction:PUTAction:DELETEAction:]:WebDriverResource.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[NDTouch touchClick:]:NDTouch.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[params objectForKey:@&quot;element&quot;];">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[WebDriverHTTPConnection httpResponseForRequest:]:WebDriverHTTPConnection.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[WebDriverResource initWithTarget:actions:]:WebDriverResource.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[HTTPServer delegate]:HTTPServer.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[WebDriverResource getArgumentDictionaryFromData:]:WebDriverResource.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[HTTPServerController httpResponseForRequest:]:HTTPServerController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[WebDriverResource httpResponseForQuery:method:withData:]:WebDriverResource.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

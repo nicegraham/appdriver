@@ -20,42 +20,132 @@ import junit.framework.TestCase;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.server.RemoteControlConfiguration;
+import org.openqa.selenium.server.SeleniumServer;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Sample test for iOS NativeDriver.
- * 
+ *
  * @author Tomohiro Kaizu
  */
-public class NativeDriverTest extends TestCase{
-  public void testNativeDriver() throws Exception {
-    WebDriver driver = new IosNativeDriver();
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+public class NativeDriverTest extends TestCase {
 
-    // Type user name
-    WebElement userName = driver.findElement(By.placeholder("User Name"));
-    userName.clear();
-    userName.sendKeys("NativeDriver");
-    // Type password
-    WebElement password = driver.findElement(By.placeholder("Password"));
-    password.clear();
-    password.sendKeys("abcdefgh");
-    // Tap "Sign in" button
-    driver.findElement(By.text("Sign in")).click();
+    SeleniumServer seleniumServer;
+    WebDriver driver;
 
-    // Verify correct title is displayed
-    String text = driver.getTitle();
-    assertEquals("NativeDriver", text);
 
-    // Type text in WebView
-    WebElement element = driver.findElement(By.name("q"));
-    element.sendKeys("NativeDriver");
-    element.submit();
+    public void testNativeDriver() throws Exception {
 
-    // Click link
-    driver.findElement(By.partialLinkText("GUI automation")).click();
-    // Verify the page
-    assertEquals("nativedriver", driver.findElement(By.id("pname")).getText());
-  }
+        driver = new IosNativeDriver();
+        //driver = new IosNativeDriver("http://192.168.0.102:3001/hub");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebElement fromGps = driver.findElement(By.placeholder("From GPS"));
+        fromGps.click();
+
+        //WebElement dummy = driver.findElement(By.placeholder("From GPS"));
+
+        //WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(6);
+
+        TouchActions touchActions = new TouchActions(driver);
+        touchActions.singleTap(fromGps).perform();
+        touchActions.down(50, 50).perform();
+        touchActions.up(50, 50).perform();
+        touchActions.move(50, 50).perform();
+        touchActions.scroll(fromGps, 50, 50).perform();
+        touchActions.doubleTap(fromGps).perform();
+        touchActions.longPress(fromGps).perform();
+        touchActions.flick(50, 50).perform();
+        touchActions.flick(fromGps, 50, 50, 10);
+
+
+
+        //findAndPrintAllElements();
+
+
+        //fromGps.click();
+
+        // Type user name
+        //WebElement userName = driver.findElement(By.placeholder("User Name"));
+        //userName.clear();
+        //userName.sendKeys("NativeDriver");
+
+        //driver.findElement(By.placeholder("From GPS")).sendKeys("12345");
+
+
+        /*
+        // Type user name
+        WebElement userName = driver.findElement(By.placeholder("User Name"));
+        userName.clear();
+        userName.sendKeys("NativeDriver");
+        // Type password
+        WebElement password = driver.findElement(By.placeholder("Password"));
+        password.clear();
+        password.sendKeys("abcdefgh");
+        // Tap "Sign in" button
+        driver.findElement(By.text("Sign in")).click();
+
+        // Verify correct title is displayed
+        String text = driver.getTitle();
+        assertEquals("NativeDriver", text);
+
+        // Type text in WebView
+        WebElement element = driver.findElement(By.name("q"));
+        element.sendKeys("NativeDriver");
+        element.submit();
+
+        // Click link
+        driver.findElement(By.partialLinkText("GUI automation")).click();
+        // Verify the page
+        assertEquals("nativedriver", driver.findElement(By.id("pname")).getText());
+        */
+    }
+
+    public DesiredCapabilities getCapabilities() {
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities = DesiredCapabilities.iphone();
+        capabilities.setVersion("8");
+
+        return capabilities;
+    }
+
+
+    public void findAndPrintAllElements() {
+
+        ArrayList<String> uiElements = new ArrayList<String>();
+        uiElements.add("UIButton");
+        uiElements.add("UISwitch");
+        uiElements.add("UITextField");
+        uiElements.add("UITextView");
+        uiElements.add("UIWebView");
+        uiElements.add("UIView");
+        uiElements.add("UISwitch");
+        uiElements.add("UILabel");
+
+
+        for (String element : uiElements) {
+
+            List<WebElement> webelement = driver.findElements(org.openqa.selenium.By.className(element));
+
+            for (int i = 0; i < webelement.size(); i++) {
+                System.out.println("");
+                System.out.println(element + " Placeholder -- > " + webelement.get(i).getAttribute("placeholder"));
+                System.out.println(element + " Text -- > " + webelement.get(i).getText());
+                System.out.println(element + " Displayed -- > " + webelement.get(i).isDisplayed());
+                System.out.println(element + " Enabled -- > " + webelement.get(i).isEnabled());
+                System.out.println("");
+            }
+
+        }
+
+    }
+
 }

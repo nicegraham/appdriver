@@ -26,6 +26,7 @@
 #import "NDMainThreadRunner.h"
 #import "NDToucher.h"
 #import "NSException+WebDriver.h"
+#import "NDPublicAutomationToucher.h"
 
 @interface NDNativeElement ()
 
@@ -215,6 +216,13 @@
     return text;
   }
   return [self attribute:@"title"];
+}
+
+// Simulates touch.
+- (void)touch {
+    [NDToucher touch:view_];
+    //PublicAutomation
+    //[NDPublicAutomationToucher PATouch:view_];
 }
 
 @end

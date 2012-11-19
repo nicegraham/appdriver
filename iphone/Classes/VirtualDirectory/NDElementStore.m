@@ -42,7 +42,7 @@ static NSTimeInterval kSleepTimeInterval = 0.25;
 
 - (NSDictionary *)registerElement:(NDElement *)element;
 
-- (NSDictionary *)elements;
+//- (NSDictionary *)elements;
 
 - (NSArray *)findElementsBy:(NSString *)by
                       value:(NSString *)value
@@ -66,6 +66,7 @@ static NSTimeInterval kSleepTimeInterval = 0.25;
 @implementation NDElementStore
 
 @synthesize session = session_;
+@synthesize elements = elements_;
 
 // Initializes an element store. Installs itself as the /element and /elements
 // virtual directory handler for the given |session|.
@@ -161,7 +162,7 @@ static NSTimeInterval kSleepTimeInterval = 0.25;
 }
 
 // This method is for testing purposes. Returns elements_ field.
-- (NSDictionary *)elements {
+- (NSMutableDictionary *)elements {
   return elements_;
 }
 

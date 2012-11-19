@@ -25,9 +25,10 @@
 // Represents the /:session/element/:id directory. This method handles HTTP
 // requests, checks the element state, and manipulates the target |NDElement|.
 @interface NDElementDirectory : HTTPVirtualDirectory {
- @private
-  NDElement *element_;
-  NDElementStore *elementStore_;  // the parent element store (weak)
+@private
+    NDElementStore *elementStore_;  // the parent element store (weak)
+@public
+    NDElement *element_;
 }
 
 // Creates new instance. Note |elementStore| is a weak pointer. The caller needs

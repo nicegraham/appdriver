@@ -16,8 +16,11 @@ limitations under the License.
 */
 package com.google.iphone.testing.nativedriver.client;
 
+import org.openqa.selenium.HasTouchScreen;
+import org.openqa.selenium.TouchScreen;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteTouchScreen;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.remote.internal.JsonToWebElementConverter;
@@ -28,100 +31,112 @@ import java.util.List;
 
 /**
  * Represents an iOS NativeDriver client used to drive native iOS applications.
- * 
+ *
  * @author Tomohiro Kaizu
  */
 public class IosNativeDriver
-    extends RemoteWebDriver implements FindsByText, FindsByPlaceholder {
-  /**
-   * Default URL for iOS NativeDriver.
-   */
-  protected static final String DEFAULT_URL = "http://localhost:3001/hub";
+        extends RemoteWebDriver implements FindsByText, FindsByPlaceholder, HasTouchScreen {
+    /**
+     * Default URL for iOS NativeDriver.
+     */
+    protected static final String DEFAULT_URL = "http://localhost:3001/hub";
+    private TouchScreen touch;
 
-  /**
-   * Creates an {@code IosNativeDriver} connected to the remote address.
-   *
-   * @param remoteAddress The full URL of the remote client (device or
-   *        simulator) running NativeDriver.
-   */
-  public IosNativeDriver(URL remoteAddress) {
-    super(remoteAddress, DesiredCapabilities.iphone());
-    setElementConverter(new JsonToWebElementConverter(this) {
-      @Override
-      protected RemoteWebElement newRemoteWebElement() {
-        return new IosNativeElement(IosNativeDriver.this);
-      }
-    });
-  }
-
-  /**
-   * Creates an {@code IosNativeDriver} connected to the remote address.
-   *
-   * @param remoteAddress The full URL of the remote client (device or
-   *        simulator) running NativeDriver.
-   */
-  public IosNativeDriver(String remoteAddress) {
-    this(newUrl(remoteAddress));
-  }
-
-  /**
-   * Creates an {@code IosNativeDriver} connected to a client (device or
-   * simulator) running on the local machine.
-   */
-  public IosNativeDriver() {
-    this(DEFAULT_URL);
-  }
-
-  /**
-   * Converts address to URL object. If the address is malformed, throws a
-   * runtime exception.
-   */
-  private static URL newUrl(String address) {
-    try {
-      return new URL(address);
-    } catch (MalformedURLException exception) {
-      throw new RuntimeException(exception);
+    /**
+     * Creates an {@code IosNativeDriver} connected to the remote address.
+     *
+     * @param remoteAddress The full URL of the remote client (device or
+     *                      simulator) running NativeDriver.
+     */
+    public IosNativeDriver(URL remoteAddress) {
+        super(remoteAddress, DesiredCapabilities.iphone());
+        setElementConverter(new JsonToWebElementConverter(this) {
+            @Override
+            protected RemoteWebElement newRemoteWebElement() {
+                return new IosNativeElement(IosNativeDriver.this);
+            }
+        });
+        init();
     }
-  }
 
-  @Override
-  public IosNativeElement findElement(org.openqa.selenium.By by) {
-    return (IosNativeElement) super.findElement(by);
-  }
+    /**
+     * Creates an {@code IosNativeDriver} connected to the remote address.
+     *
+     * @param remoteAddress The full URL of the remote client (device or
+     *                      simulator) running NativeDriver.
+     */
+    public IosNativeDriver(String remoteAddress) {
+        this(newUrl(remoteAddress));
+        init();
+    }
 
-  @SuppressWarnings({"unchecked", "rawtypes"})
-  public List<IosNativeElement> findIosNativeElements(
-      org.openqa.selenium.By by) {
-    return (List) findElements(by);
-  }
+    /**
+     * Creates an {@code IosNativeDriver} connected to a client (device or
+     * simulator) running on the local machine.
+     */
+    public IosNativeDriver() {
+        this(DEFAULT_URL);
+        init();
+    }
 
-  @Override
-  public WebElement findElementByPlaceholder(String using) {
-    return findElement(USING_PLACEHOLDER, using);
-  }
+    /**
+     * Converts address to URL object. If the address is malformed, throws a
+     * runtime exception.
+     */
+    private static URL newUrl(String address) {
+        try {
+            return new URL(address);
+        } catch (MalformedURLException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 
-  @Override
-  public List<WebElement> findElementsByPlaceholder(String using) {
-    return findElements(USING_PLACEHOLDER, using);
-  }
+    @Override
+    public IosNativeElement findElement(org.openqa.selenium.By by) {
+        return (IosNativeElement) super.findElement(by);
+    }
 
-  @Override
-  public WebElement findElementByText(String using) {
-    return findElement(USING_TEXT, using);
-  }
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public List<IosNativeElement> findIosNativeElements(
+            org.openqa.selenium.By by) {
+        return (List) findElements(by);
+    }
 
-  @Override
-  public List<WebElement> findElementsByText(String using) {
-    return findElements(USING_TEXT, using);
-  }
+    @Override
+    public WebElement findElementByPlaceholder(String using) {
+        return findElement(USING_PLACEHOLDER, using);
+    }
 
-  @Override
-  public WebElement findElementByPartialText(String using) {
-    return findElement(USING_PARTIALTEXT, using);
-  }
+    @Override
+    public List<WebElement> findElementsByPlaceholder(String using) {
+        return findElements(USING_PLACEHOLDER, using);
+    }
 
-  @Override
-  public List<WebElement> findElementsByPartialText(String using) {
-    return findElements(USING_PARTIALTEXT, using);
-  }
+    @Override
+    public WebElement findElementByText(String using) {
+        return findElement(USING_TEXT, using);
+    }
+
+    @Override
+    public List<WebElement> findElementsByText(String using) {
+        return findElements(USING_TEXT, using);
+    }
+
+    @Override
+    public WebElement findElementByPartialText(String using) {
+        return findElement(USING_PARTIALTEXT, using);
+    }
+
+    @Override
+    public List<WebElement> findElementsByPartialText(String using) {
+        return findElements(USING_PARTIALTEXT, using);
+    }
+
+    private void init() {
+        touch = new RemoteTouchScreen(getExecuteMethod());
+    }
+
+    public TouchScreen getTouch() {
+        return touch;
+    }
 }

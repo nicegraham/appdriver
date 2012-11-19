@@ -42,5 +42,9 @@
 // Returns an array of |NDNativeElement| representing child |UIView|s.
 - (NSArray *)subElements;
 
+// Simulate a click on the element.
+- (void)touch;
+
+
 @end
 

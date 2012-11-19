@@ -18,6 +18,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HTTPVirtualDirectory.h"
+#import "NDTouch.h"
 
 @class NDElementStore;
 @class NDSessionRoot;

@@ -27,11 +27,13 @@
 @interface NDElementStore : HTTPVirtualDirectory {
  @private
   NDSession* session_;  // the parent session (weak)
-  NSMutableDictionary *elements_;
-  int nextId_;
+   int nextId_;
+    NSMutableDictionary *elements_;
+
 }
 
 @property(nonatomic, readonly) NDSession *session;
+@property (nonatomic, retain) NSMutableDictionary *elements;
 
 // Makes an element store. Installs itself as the /element and /elements
 // virtual directory handler for the given |session|. Note |session| is a weak
@@ -51,5 +53,6 @@
 // If |root| is nil, finds descendants of the default root.
 - (NSArray *)findElements:(NSDictionary *)query
                      root:(NDElement *)root;
+
 
 @end

@@ -76,6 +76,11 @@ NSString *kByXpath = @"xpath";
 }
 
 // Implemented in the subclasses if this feature is available.
+- (void)touch {
+    // do nothing
+}
+
+// Implemented in the subclasses if this feature is available.
 - (NSArray *)findElementsBy:(NSString *)by
                       value:(NSString *)value
                    maxCount:(NSUInteger)maxCount {

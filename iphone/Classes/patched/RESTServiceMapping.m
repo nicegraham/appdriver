@@ -89,7 +89,8 @@
   NSString *query;
   NSString *method;
   NSData *data;
-
+    
+    
   [RESTServiceMapping propertiesOfHTTPMessage:request
                                       toQuery:&query
                                        method:&method

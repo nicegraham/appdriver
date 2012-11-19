@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
+		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
+		AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */; };
+		AF4BE769165A50D20028A614 /* NDPublicAutomationToucher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */; };
+		AFCEF4931653DC0500A91329 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCEF4921653DB8600A91329 /* libPublicAutomation.a */; };
+		AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC121CC1378D35A009E3F71 /* UIKit.framework */; };
+		B08554232BF3F7595D30D067 /* TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = B08551C2202499D8B807D522 /* TouchSynthesis.m */; };
+		B0855F83A104CEF320E7BC13 /* TouchSynthesis.h in Headers */ = {isa = PBXBuildFile; fileRef = B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */; };
 		EF17647613E684FB007045DC /* NDAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = EF17647413E684FB007045DC /* NDAttribute.h */; };
 		EF17647713E684FB007045DC /* NDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17647513E684FB007045DC /* NDAttribute.m */; };
 		EF17647F13E68A83007045DC /* NDAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17647E13E68A83007045DC /* NDAttributeTest.m */; };
-		EF24B21B13CC0F67006E0B0C /* TouchSynthesis.h in Headers */ = {isa = PBXBuildFile; fileRef = EF24B21913CC0F67006E0B0C /* TouchSynthesis.h */; };
-		EF24B21C13CC0F67006E0B0C /* TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = EF24B21A13CC0F67006E0B0C /* TouchSynthesis.m */; };
 		EF2F20861386554600433A9B /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = EF2F20851386554600433A9B /* GTMDefines.h */; };
 		EF2F20891386555200433A9B /* GTMSenTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = EF2F20871386555200433A9B /* GTMSenTestCase.h */; };
 		EF2F20931386560900433A9B /* libNativeDriver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC121BE1378D359009E3F71 /* libNativeDriver.a */; };
@@ -119,6 +125,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AFA9D325162C47AB00C1E107 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AFA9D292162C2A2500C1E107;
+			remoteInfo = Automation;
+		};
+		AFCEF4911653DB8600A91329 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C194253815D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
 		EF0DF1B413CD64F5003A3877 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */;
@@ -189,13 +209,18 @@
 		6736FB7413CC1CD200DADFA7 /* GTMUnitTestDevLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMUnitTestDevLog.h; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.h"; sourceTree = "<group>"; };
 		6736FB7513CC1CD200DADFA7 /* GTMUnitTestDevLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMUnitTestDevLog.m; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.m"; sourceTree = "<group>"; };
 		6736FBB813CC233E00DADFA7 /* TestAll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TestAll-Info.plist"; sourceTree = "<group>"; };
+		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
+		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
+		AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDPublicAutomationToucher.h; sourceTree = "<group>"; };
+		AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDPublicAutomationToucher.m; sourceTree = "<group>"; };
+		AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ../../../github/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
+		B08551C2202499D8B807D522 /* TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchSynthesis.m; path = ThirdParty/TouchSynthesis/TouchSynthesis.m; sourceTree = "<group>"; };
+		B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchSynthesis.h; path = ThirdParty/TouchSynthesis/TouchSynthesis.h; sourceTree = "<group>"; };
 		EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServerLibrary.xcodeproj; path = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/CocoaHTTPServerLibrary.xcodeproj"; sourceTree = "<group>"; };
 		EF17647413E684FB007045DC /* NDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDAttribute.h; path = Classes/VirtualDirectory/NDAttribute.h; sourceTree = SOURCE_ROOT; };
 		EF17647513E684FB007045DC /* NDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDAttribute.m; path = Classes/VirtualDirectory/NDAttribute.m; sourceTree = SOURCE_ROOT; };
 		EF17647D13E68A83007045DC /* NDAttributeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAttributeTest.h; sourceTree = "<group>"; };
 		EF17647E13E68A83007045DC /* NDAttributeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAttributeTest.m; sourceTree = "<group>"; };
-		EF24B21913CC0F67006E0B0C /* TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchSynthesis.h; path = ThirdParty/TouchSynthesis/TouchSynthesis.h; sourceTree = "<group>"; };
-		EF24B21A13CC0F67006E0B0C /* TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchSynthesis.m; path = ThirdParty/TouchSynthesis/TouchSynthesis.m; sourceTree = "<group>"; };
 		EF2F20851386554600433A9B /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = "ThirdParty/google-toolbox-for-mac/GTMDefines.h"; sourceTree = "<group>"; };
 		EF2F20871386555200433A9B /* GTMSenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSenTestCase.h; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMSenTestCase.h"; sourceTree = "<group>"; };
 		EF2F20CD1386650700433A9B /* NDSessionRootTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSessionRootTest.h; sourceTree = "<group>"; };
@@ -229,7 +254,7 @@
 		EF786D1713C551A40050B1C1 /* NDElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDElement.m; sourceTree = "<group>"; };
 		EF786D1A13C5543E0050B1C1 /* NDNativeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDNativeElement.h; sourceTree = "<group>"; };
 		EF786D1B13C5543E0050B1C1 /* NDNativeElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDNativeElement.m; sourceTree = "<group>"; };
-		EF8095C8138F82B100B3D844 /* NDNativeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDNativeDriver.h; path = Classes/NDNativeDriver.h; sourceTree = SOURCE_ROOT; };
+		EF8095C8138F82B100B3D844 /* NDNativeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDNativeDriver.h; path = Classes/NDNativeDriver.h; sourceTree = "<group>"; };
 		EF8095C9138F82B100B3D844 /* NDNativeDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDNativeDriver.m; path = Classes/NDNativeDriver.m; sourceTree = SOURCE_ROOT; };
 		EF8095CC138F834100B3D844 /* NDSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDSession.h; path = Classes/VirtualDirectory/NDSession.h; sourceTree = SOURCE_ROOT; };
 		EF8095CD138F834100B3D844 /* NDSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDSession.m; path = Classes/VirtualDirectory/NDSession.m; sourceTree = SOURCE_ROOT; };
@@ -323,6 +348,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */,
+				AFCEF4931653DC0500A91329 /* libPublicAutomation.a in Frameworks */,
 				EFC121C21378D359009E3F71 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,10 +371,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AFCEF48B1653DB8600A91329 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFCEF4921653DB8600A91329 /* libPublicAutomation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EF0DF1AE13CD64F4003A3877 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				EF0DF1B513CD64F5003A3877 /* libCocoaHTTPServer.a */,
+				AFA9D326162C47AB00C1E107 /* Automation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,8 +391,8 @@
 		EF24B21813CC0F3B006E0B0C /* TouchSynthesis */ = {
 			isa = PBXGroup;
 			children = (
-				EF24B21913CC0F67006E0B0C /* TouchSynthesis.h */,
-				EF24B21A13CC0F67006E0B0C /* TouchSynthesis.m */,
+				B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */,
+				B08551C2202499D8B807D522 /* TouchSynthesis.m */,
 			);
 			name = TouchSynthesis;
 			sourceTree = "<group>";
@@ -450,6 +486,7 @@
 		EFC121C01378D359009E3F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */,
 				EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */,
 				EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */,
 				EF2F20D313866E9C00433A9B /* CFNetwork.framework */,
@@ -491,6 +528,8 @@
 				EF786D1B13C5543E0050B1C1 /* NDNativeElement.m */,
 				EF529FEC13CA91C800449820 /* NDToucher.h */,
 				EF529FED13CA91C800449820 /* NDToucher.m */,
+				AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */,
+				AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */,
 			);
 			name = Automation;
 			path = Classes/Automation;
@@ -577,6 +616,8 @@
 				EF8095CF138F834100B3D844 /* NDSessionRoot.m */,
 				EFDA59C813E3F2260022E0EF /* NDTimeouts.h */,
 				EFDA59C913E3F2260022E0EF /* NDTimeouts.m */,
+				AF1C83111656B95B0088555B /* NDTouch.h */,
+				AF1C83121656B95B0088555B /* NDTouch.m */,
 			);
 			name = VirtualDirectory;
 			sourceTree = "<group>";
@@ -716,7 +757,6 @@
 				EF786D1813C551A40050B1C1 /* NDElement.h in Headers */,
 				EF786D1C13C5543E0050B1C1 /* NDNativeElement.h in Headers */,
 				EF529FEE13CA91C800449820 /* NDToucher.h in Headers */,
-				EF24B21B13CC0F67006E0B0C /* TouchSynthesis.h in Headers */,
 				EFC7276813CD3FDE00ABC106 /* errorcodes.h in Headers */,
 				EF3F71EE13D59644002C9BE8 /* NDMainThreadRunner.h in Headers */,
 				EFF0EB5513D59D2000D7E0FD /* NDJavaScriptRunner.h in Headers */,
@@ -731,6 +771,9 @@
 				EF67654413E245F4000529C5 /* NDNativeButtonElement.h in Headers */,
 				EFDA59CA13E3F2260022E0EF /* NDTimeouts.h in Headers */,
 				EF17647613E684FB007045DC /* NDAttribute.h in Headers */,
+				AF1C83131656B95C0088555B /* NDTouch.h in Headers */,
+				B0855F83A104CEF320E7BC13 /* TouchSynthesis.h in Headers */,
+				AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +787,7 @@
 				EFC121BA1378D359009E3F71 /* Sources */,
 				EFC121BB1378D359009E3F71 /* Frameworks */,
 				EFC121BC1378D359009E3F71 /* Headers */,
+				AFCEF4951653DC6F00A91329 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -780,6 +824,9 @@
 /* Begin PBXProject section */
 		EFC121B51378D359009E3F71 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
 			buildConfigurationList = EFC121B81378D359009E3F71 /* Build configuration list for PBXProject "NativeDriver" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -800,6 +847,10 @@
 					ProductGroup = EF4FA6F2138CFA5700936103 /* Products */;
 					ProjectRef = EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */;
 				},
+				{
+					ProductGroup = AFCEF48B1653DB8600A91329 /* Products */;
+					ProjectRef = AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -810,6 +861,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		AFA9D326162C47AB00C1E107 /* Automation.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Automation.app;
+			remoteRef = AFA9D325162C47AB00C1E107 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AFCEF4921653DB8600A91329 /* libPublicAutomation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPublicAutomation.a;
+			remoteRef = AFCEF4911653DB8600A91329 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EF0DF1B513CD64F5003A3877 /* libCocoaHTTPServer.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -848,6 +913,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AFCEF4951653DC6F00A91329 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFE6958A1386534D0057D1E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -906,7 +978,6 @@
 				EF786D1913C551A40050B1C1 /* NDElement.m in Sources */,
 				EF786D1D13C5543E0050B1C1 /* NDNativeElement.m in Sources */,
 				EF529FEF13CA91C800449820 /* NDToucher.m in Sources */,
-				EF24B21C13CC0F67006E0B0C /* TouchSynthesis.m in Sources */,
 				EF3F71EF13D59644002C9BE8 /* NDMainThreadRunner.m in Sources */,
 				EFF0EB5613D59D2000D7E0FD /* NDJavaScriptRunner.mm in Sources */,
 				EFF0EB5813D59D2000D7E0FD /* NDWebElement.mm in Sources */,
@@ -919,6 +990,9 @@
 				EF67654513E245F4000529C5 /* NDNativeButtonElement.m in Sources */,
 				EFDA59CB13E3F2260022E0EF /* NDTimeouts.m in Sources */,
 				EF17647713E684FB007045DC /* NDAttribute.m in Sources */,
+				AF1C83141656B95C0088555B /* NDTouch.m in Sources */,
+				B08554232BF3F7595D30D067 /* TouchSynthesis.m in Sources */,
+				AF4BE769165A50D20028A614 /* NDPublicAutomationToucher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,7 +1041,7 @@
 		EFC121DF1378D35A009E3F71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
@@ -975,6 +1049,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -982,13 +1057,14 @@
 		EFC121E01378D35A009E3F71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -996,6 +1072,7 @@
 		EFC121E21378D35A009E3F71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1004,12 +1081,14 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		EFC121E31378D35A009E3F71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1018,6 +1097,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1036,7 +1116,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/NativeDriverTests-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",
@@ -1070,7 +1150,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/NativeDriverTests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty\"",

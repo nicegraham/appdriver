@@ -183,7 +183,11 @@
 - (NSObject<HTTPResponse> *)httpResponseForQuery:(NSString *)query
                                            method:(NSString *)method
                                          withData:(NSData *)theData {
-  SEL selector = [[methodActions_ objectForKey:method] pointerValue];
+
+    SEL    selector = [[methodActions_ objectForKey:method] pointerValue];
+
+
+  
   NSMethodSignature *methodSignature =
       [target_ methodSignatureForSelector:selector];
   WebDriverResponse *response = nil;
