@@ -95,7 +95,7 @@
     NSMutableDictionary *elements = elementStore_.elements;
     NDNativeButtonElement *button = [elements objectForKey:elementId];
     element_= [elements objectForKey:elementId];
-    [UIAutomationBridge tapView:element_];
+    [UIAutomationBridge tapView:(UIView *)element_];
     //[NDPublicAutomationToucher PATouch:element_];
     
     NSLog(@"In singleTap");   // [element_ touch];
