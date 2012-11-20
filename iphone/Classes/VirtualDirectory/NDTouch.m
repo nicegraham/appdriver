@@ -8,14 +8,12 @@
 
 #import "NDTouch.h"
 
-#import "errorcodes.h"
-#import "NDSession.h"
-#import "NSException+WebDriver.h"
 #import "WebDriverResource.h"
 #import "NDElementStore.h"
 #import "NDElement.h"
 #import "NDNativeButtonElement.h"
-#import "NDPublicAutomationToucher.h"
+//#import "NDPublicAutomationToucher.h"
+//#import "UIAutomationBridge.h"
 #import <PublicAutomation/UIAutomationBridge.h>
 
 
@@ -90,12 +88,11 @@
 
 // Simulate a click on the element.
 - (void)singleTap:(NSDictionary *)params{
-    //NSLog(@"In singleTap");
     NSString *elementId = [params objectForKey:@"element"];
     NSMutableDictionary *elements = elementStore_.elements;
-    NDNativeButtonElement *button = [elements objectForKey:elementId];
-    element_= [elements objectForKey:elementId];
-    [UIAutomationBridge tapView:(UIView *)element_];
+    UIView *elementView = nil; //[elements objectForKey:elementId];
+    //element_= [elements objectForKey:elementId];
+    [UIAutomationBridge tapView:elementView];
     //[NDPublicAutomationToucher PATouch:element_];
     
     NSLog(@"In singleTap");   // [element_ touch];
