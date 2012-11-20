@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6C95319165BABAC004BE10A /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C95316165BAB8D004BE10A /* libPublicAutomation.a */; };
 		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
 		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
 		AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */; };
 		AF4BE769165A50D20028A614 /* NDPublicAutomationToucher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */; };
-		AFCEF4931653DC0500A91329 /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFCEF4921653DB8600A91329 /* libPublicAutomation.a */; };
 		AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC121CC1378D35A009E3F71 /* UIKit.framework */; };
 		B08554232BF3F7595D30D067 /* TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = B08551C2202499D8B807D522 /* TouchSynthesis.m */; };
 		B0855F83A104CEF320E7BC13 /* TouchSynthesis.h in Headers */ = {isa = PBXBuildFile; fileRef = B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */; };
@@ -125,19 +125,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A6C95315165BAB8D004BE10A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C194253815D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
+		A6C95317165BABA5004BE10A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C194253715D838BD004FC314;
+			remoteInfo = PublicAutomation;
+		};
 		AFA9D325162C47AB00C1E107 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = AFA9D292162C2A2500C1E107;
 			remoteInfo = Automation;
-		};
-		AFCEF4911653DB8600A91329 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C194253815D838BD004FC314;
-			remoteInfo = PublicAutomation;
 		};
 		EF0DF1B413CD64F5003A3877 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -209,11 +216,11 @@
 		6736FB7413CC1CD200DADFA7 /* GTMUnitTestDevLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMUnitTestDevLog.h; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.h"; sourceTree = "<group>"; };
 		6736FB7513CC1CD200DADFA7 /* GTMUnitTestDevLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMUnitTestDevLog.m; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.m"; sourceTree = "<group>"; };
 		6736FBB813CC233E00DADFA7 /* TestAll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TestAll-Info.plist"; sourceTree = "<group>"; };
+		A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ../PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
 		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
 		AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDPublicAutomationToucher.h; sourceTree = "<group>"; };
 		AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDPublicAutomationToucher.m; sourceTree = "<group>"; };
-		AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ../../../github/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		B08551C2202499D8B807D522 /* TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchSynthesis.m; path = ThirdParty/TouchSynthesis/TouchSynthesis.m; sourceTree = "<group>"; };
 		B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchSynthesis.h; path = ThirdParty/TouchSynthesis/TouchSynthesis.h; sourceTree = "<group>"; };
 		EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServerLibrary.xcodeproj; path = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/CocoaHTTPServerLibrary.xcodeproj"; sourceTree = "<group>"; };
@@ -348,8 +355,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C95319165BABAC004BE10A /* libPublicAutomation.a in Frameworks */,
 				AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */,
-				AFCEF4931653DC0500A91329 /* libPublicAutomation.a in Frameworks */,
 				EFC121C21378D359009E3F71 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,10 +378,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AFCEF48B1653DB8600A91329 /* Products */ = {
+		A6C9530F165BAB8D004BE10A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AFCEF4921653DB8600A91329 /* libPublicAutomation.a */,
+				A6C95316165BAB8D004BE10A /* libPublicAutomation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -486,7 +493,7 @@
 		EFC121C01378D359009E3F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */,
+				A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */,
 				EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */,
 				EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */,
 				EF2F20D313866E9C00433A9B /* CFNetwork.framework */,
@@ -792,6 +799,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A6C95318165BABA5004BE10A /* PBXTargetDependency */,
 				EF0DF1D713CD656D003A3877 /* PBXTargetDependency */,
 			);
 			name = NativeDriver;
@@ -848,8 +856,8 @@
 					ProjectRef = EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */;
 				},
 				{
-					ProductGroup = AFCEF48B1653DB8600A91329 /* Products */;
-					ProjectRef = AFCEF48A1653DB8600A91329 /* PublicAutomation.xcodeproj */;
+					ProductGroup = A6C9530F165BAB8D004BE10A /* Products */;
+					ProjectRef = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -861,18 +869,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		A6C95316165BAB8D004BE10A /* libPublicAutomation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPublicAutomation.a;
+			remoteRef = A6C95315165BAB8D004BE10A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AFA9D326162C47AB00C1E107 /* Automation.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = Automation.app;
 			remoteRef = AFA9D325162C47AB00C1E107 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AFCEF4921653DB8600A91329 /* libPublicAutomation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPublicAutomation.a;
-			remoteRef = AFCEF4911653DB8600A91329 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EF0DF1B513CD64F5003A3877 /* libCocoaHTTPServer.a */ = {
@@ -1020,6 +1028,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A6C95318165BABA5004BE10A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PublicAutomation;
+			targetProxy = A6C95317165BABA5004BE10A /* PBXContainerItemProxy */;
+		};
 		EF0DF1D713CD656D003A3877 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaHTTPServer;

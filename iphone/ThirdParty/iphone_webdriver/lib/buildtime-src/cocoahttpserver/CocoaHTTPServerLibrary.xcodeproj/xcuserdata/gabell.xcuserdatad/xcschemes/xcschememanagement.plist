@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Automation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>CocoaHTTPServer.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>8319631A0F28464E005D1D21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AFA9D291162C2A2500C1E107</key>
 		<dict>
 			<key>primary</key>
 			<true/>
