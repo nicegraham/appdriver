@@ -126,3 +126,7 @@ iphone/ThirdParty/google-toolbox-for-mac/Xcode4Plugin/GTMXcode4Plugin.xcodeproj/
 iphone/ThirdParty/google-toolbox-for-mac/UnitTesting/TestData/.svn/all-wcprops
 
 iphone/ThirdParty/google-toolbox-for-mac/UnitTesting/TestData/.svn/entries
+
+FuelView/.DS_Store
+
+FuelView/FuelView.xcodeproj/project.xcworkspace/xcuserdata/dgrace.xcuserdatad/UserInterfaceState.xcuserstate
