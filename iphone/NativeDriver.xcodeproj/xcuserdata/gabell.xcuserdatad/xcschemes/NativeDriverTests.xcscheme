@@ -4,6 +4,19 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EFE6958C1386534D0057D1E5"
+               BuildableName = "NativeDriverTests.octest"
+               BlueprintName = "NativeDriverTests"
+               ReferencedContainer = "container:NativeDriver.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"

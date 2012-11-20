@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6C95319165BABAC004BE10A /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C95316165BAB8D004BE10A /* libPublicAutomation.a */; };
+		A6C9533F165BBC37004BE10A /* PublicAutomation.xcodeproj in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */; };
 		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
 		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
 		AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */; };
@@ -217,6 +217,7 @@
 		6736FB7513CC1CD200DADFA7 /* GTMUnitTestDevLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMUnitTestDevLog.m; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.m"; sourceTree = "<group>"; };
 		6736FBB813CC233E00DADFA7 /* TestAll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TestAll-Info.plist"; sourceTree = "<group>"; };
 		A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ../PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
+		A6C9533D165BBBB7004BE10A /* libPublicAutomation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPublicAutomation.a; path = ThirdParty/libPublicAutomation.a; sourceTree = "<group>"; };
 		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
 		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
 		AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDPublicAutomationToucher.h; sourceTree = "<group>"; };
@@ -355,7 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6C95319165BABAC004BE10A /* libPublicAutomation.a in Frameworks */,
+				A6C9533F165BBC37004BE10A /* PublicAutomation.xcodeproj in Frameworks */,
 				AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */,
 				EFC121C21378D359009E3F71 /* Foundation.framework in Frameworks */,
 			);
@@ -474,6 +475,7 @@
 		EFC121B31378D359009E3F71 = {
 			isa = PBXGroup;
 			children = (
+				A6C9533D165BBBB7004BE10A /* libPublicAutomation.a */,
 				EFC121C31378D359009E3F71 /* Classes */,
 				EFF8DD551384E060005945FC /* ThirdParty */,
 				EFE695A01386539F0057D1E5 /* Tests */,
@@ -1061,7 +1063,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**";
+				HEADER_SEARCH_PATHS = (
+					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
+					"Frameworks/PublicAutomation/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -1076,7 +1081,10 @@
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**";
+				HEADER_SEARCH_PATHS = (
+					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
+					"Frameworks/PublicAutomation/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -1088,7 +1096,15 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
+					"Frameworks/PublicAutomation/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1104,7 +1120,15 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
+					"Frameworks/PublicAutomation/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
