@@ -8,7 +8,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../iphone/Classes/VirtualDirectory/NDTouch.m"
-         timestampString = "375113549.794903"
+         timestampString = "375115140.136662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "95"
@@ -17,20 +17,20 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../iphone/Classes/VirtualDirectory/NDTouch.m"
-         timestampString = "375113552.615752"
+         timestampString = "375115140.136662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-singleTap:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../PublicAutomation/PublicAutomation/UIAutomationBridge.m"
@@ -40,6 +40,32 @@
          startingLineNumber = "38"
          endingLineNumber = "38"
          landmarkName = "+tapView:atPoint:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../iphone/Classes/VirtualDirectory/NDTouch.m"
+         timestampString = "375115134.349758"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
+         landmarkName = "-singleTap:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../PublicAutomation/PublicAutomation/UIAutomationBridge.m"
+         timestampString = "375115504.443815"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
+         landmarkName = "+tapView:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

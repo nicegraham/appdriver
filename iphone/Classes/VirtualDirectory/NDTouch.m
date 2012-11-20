@@ -12,7 +12,7 @@
 #import "NDElementStore.h"
 #import "NDElement.h"
 #import "NDNativeButtonElement.h"
-//#import "NDPublicAutomationToucher.h"
+#import "NDPublicAutomationToucher.h"
 //#import "UIAutomationBridge.h"
 #import <PublicAutomation/UIAutomationBridge.h>
 
@@ -90,9 +90,11 @@
 - (void)singleTap:(NSDictionary *)params{
     NSString *elementId = [params objectForKey:@"element"];
     NSMutableDictionary *elements = elementStore_.elements;
-    UIView *elementView = nil; //[elements objectForKey:elementId];
-    //element_= [elements objectForKey:elementId];
+    
+    UIView *elementView = [elements objectForKey:elementId];
     [UIAutomationBridge tapView:elementView];
+    
+    //element_= [elements objectForKey:elementId];
     //[NDPublicAutomationToucher PATouch:element_];
     
     NSLog(@"In singleTap");   // [element_ touch];
