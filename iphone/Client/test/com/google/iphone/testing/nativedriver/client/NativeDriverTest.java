@@ -47,23 +47,27 @@ public class NativeDriverTest extends TestCase {
         //driver = new IosNativeDriver("http://192.168.0.102:3001/hub");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement fromGps = driver.findElement(By.placeholder("From GPS"));
-        fromGps.click();
+        //UITextField
+        //WebElement fromGps = driver.findElement(By.placeholder("From GPS"));
+        //fromGps.click();
 
         //WebElement dummy = driver.findElement(By.placeholder("From GPS"));
 
-        //WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(6);
+        WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(2);
+        //fromGps.click();
+
 
         TouchActions touchActions = new TouchActions(driver);
+        //touchActions.flick(fromGps, 10, 0, 0);
         touchActions.singleTap(fromGps).perform();
-        touchActions.down(50, 50).perform();
-        touchActions.up(50, 50).perform();
-        touchActions.move(50, 50).perform();
-        touchActions.scroll(fromGps, 50, 50).perform();
-        touchActions.doubleTap(fromGps).perform();
-        touchActions.longPress(fromGps).perform();
-        touchActions.flick(50, 50).perform();
-        touchActions.flick(fromGps, 50, 50, 10);
+//        touchActions.down(50, 50).perform();
+//        touchActions.up(50, 50).perform();
+//        touchActions.move(50, 50).perform();
+//        touchActions.scroll(fromGps, 50, 50).perform();
+//        touchActions.doubleTap(fromGps).perform();
+//        touchActions.longPress(fromGps).perform();
+//        touchActions.flick(50, 50).perform();
+//        touchActions.flick(fromGps, 50, 50, 10);
 
 
 

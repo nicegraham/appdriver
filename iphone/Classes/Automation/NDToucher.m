@@ -31,7 +31,7 @@
 
 // Sends touch event to specified view.
 + (void)touch:(UIView *)view {
-    printf("*************************** - in touch\n");
+    printf("*************************** - in NDToucher - touch\n");
   NDToucher *toucher = [[[NDToucher alloc] init] autorelease];
   [toucher performSelectorOnMainThread:@selector(performTouch:)
                             withObject:view
@@ -41,7 +41,7 @@
 // Sends touch event to specified view. This method should be executed on main
 // thread.
 - (void)performTouch:(UIView *)view {
-    printf("*************************** - in performTouch\n");
+    printf("*************************** - in NDToucher - in performTouch\n");
     
     // Make the view visible.
   [self scrollToVisible:view];
@@ -67,7 +67,7 @@
 
 // Scroll the |UIScrollView|s to display |view| on the screen.
 - (void)scrollToVisible:(UIView *)view {
-    printf("*************************** - in scrollToVisible\n");
+    printf("*************************** - in in NDToucher - scrollToVisible\n");
     UIView *parent = [view superview];
   while (parent) {
     if ([parent isKindOfClass:[UIScrollView class]]) {

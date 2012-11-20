@@ -14,6 +14,9 @@
 #import "WebDriverResource.h"
 #import "NDElementStore.h"
 #import "NDElement.h"
+#import "NDNativeButtonElement.h"
+#import "NDPublicAutomationToucher.h"
+
 
 @interface NDTouch ()
 
@@ -89,9 +92,11 @@
     //NSLog(@"In singleTap");
     NSString *elementId = [params objectForKey:@"element"];
     NSMutableDictionary *elements = elementStore_.elements;
+    NDNativeButtonElement *button = [elements objectForKey:elementId];
     element_= [elements objectForKey:elementId];
-    //element_.click;
-    element_.touch;
+    [NDPublicAutomationToucher PATouch:element_];
+    
+    NSLog(@"In singleTap");   // [element_ touch];
 }
 
 - (void)down:(NSDictionary *)params{

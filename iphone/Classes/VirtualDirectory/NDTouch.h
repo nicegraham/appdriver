@@ -15,11 +15,13 @@
 // directory in the WebDriver REST service. Supports touch actions.
 @interface NDTouch : HTTPVirtualDirectory {
 @private
-    NDElement *element_;  // the parent session (weak)
+    
     NDElementStore *elementStore_;
+@public
+    NDElement *element_;  // the parent session (weak)
 }
 
-// Creates new instance. 
+// Creates new instance.
 + (NDTouch *)touchForElement:(NDElementStore *)elementStore;
 
 @end

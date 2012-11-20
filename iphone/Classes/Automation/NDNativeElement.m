@@ -32,6 +32,7 @@
 
 - (BOOL)matchesBy:(NSString *)by value:(NSString *)value;
 - (NSString *)performAttribute:(NSString *)name;
+- (void)touch;
 
 @end
 
@@ -220,6 +221,7 @@
 
 // Simulates touch.
 - (void)touch {
+    NSLog(@"************* In NDNativeElement touch");
     [NDToucher touch:view_];
     //PublicAutomation
     //[NDPublicAutomationToucher PATouch:view_];

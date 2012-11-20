@@ -7,16 +7,19 @@
 //
 
 #import "NDPublicAutomationToucher.h"
+#import "NDToucher.h"
 
 @implementation NDPublicAutomationToucher
 
 // Sends touch event to specified view.
 + (void)PATouch:(UIView *)view {
     printf("*************************** - in PATouch\n");
-    NDPublicAutomationToucher *toucher = [[[NDPublicAutomationToucher alloc] init] autorelease];
-    [toucher performSelectorOnMainThread:@selector(performTouch:)
-                              withObject:view
-                           waitUntilDone:YES];
+    [NDToucher touch:view];
+    
+    //NDPublicAutomationToucher *toucher = [[[NDPublicAutomationToucher alloc] init] autorelease];
+    //[toucher performSelectorOnMainThread:@selector(performTouch:)
+    //                          withObject:view
+    //                       waitUntilDone:YES];
 }
 
 

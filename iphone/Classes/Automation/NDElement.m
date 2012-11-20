@@ -73,11 +73,12 @@ NSString *kByXpath = @"xpath";
 // Implemented in the subclasses if this feature is available.
 - (void)click {
   // do nothing
-}
+    NSLog(@"******************** In NDElement click implementation");}
 
 // Implemented in the subclasses if this feature is available.
 - (void)touch {
     // do nothing
+    NSLog(@"******************** In NDElement touch implementation");
 }
 
 // Implemented in the subclasses if this feature is available.

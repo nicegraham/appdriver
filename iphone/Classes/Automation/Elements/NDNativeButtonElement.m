@@ -35,4 +35,12 @@
   return [NSArray array];
 }
 
+//- (void) click {
+//    UIView *view;
+//    view = (UIButton *)[self view];
+//    NSLog(@"in click");
+//}
+
+
+
 @end

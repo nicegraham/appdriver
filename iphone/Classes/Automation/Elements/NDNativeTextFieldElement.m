@@ -26,6 +26,7 @@
   return [key isEqualToString:@"\n"];
 }
 
+
 // Sends |textFieldShouldReturn:| message to the delegate.
 - (BOOL)shouldReturn {
   UITextField *textField = (UITextField *)[self view];

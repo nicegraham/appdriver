@@ -749,7 +749,7 @@
 				);
 				PRODUCT_NAME = Automation1;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../iphone\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/**";
 			};
 			name = Debug;
 		};
@@ -780,7 +780,7 @@
 				);
 				PRODUCT_NAME = Automation1;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../iphone\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/** \"${PROJECT_DIR}/../iphone\"/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
