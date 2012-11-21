@@ -93,11 +93,6 @@
     
     UIView *elementView = [elements objectForKey:elementId];
     [UIAutomationBridge tapView:elementView];
-    
-    //element_= [elements objectForKey:elementId];
-    //[NDPublicAutomationToucher PATouch:element_];
-    
-    NSLog(@"In singleTap");   // [element_ touch];
 }
 
 - (void)down:(NSDictionary *)params{
@@ -135,7 +130,10 @@
 - (void)longPress:(NSDictionary *)params{
     NSString *elementId = [params objectForKey:@"element"];
     NSMutableDictionary *elements = elementStore_.elements;
-    element_= [elements objectForKey:elementId];
+    
+    UIView *elementView = [elements objectForKey:elementId];
+    [UIAutomationBridge longtapView:elementView];
+
 }
 
 - (void)flick:(NSDictionary *)params{

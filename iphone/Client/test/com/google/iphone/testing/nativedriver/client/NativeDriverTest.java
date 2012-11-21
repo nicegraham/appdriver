@@ -59,7 +59,7 @@ public class NativeDriverTest extends TestCase {
 
         TouchActions touchActions = new TouchActions(driver);
         //touchActions.flick(fromGps, 10, 0, 0);
-        touchActions.singleTap(fromGps).perform();
+        touchActions.longPress(fromGps).perform();
 //        touchActions.down(50, 50).perform();
 //        touchActions.up(50, 50).perform();
 //        touchActions.move(50, 50).perform();
