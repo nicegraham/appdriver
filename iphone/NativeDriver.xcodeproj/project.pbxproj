@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6C953BB165BC700004BE10A /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C95316165BAB8D004BE10A /* libPublicAutomation.a */; };
+		A6DE08FB165CDA9200C9DC7F /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DE08FA165CDA8600C9DC7F /* libPublicAutomation.a */; };
 		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
 		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
 		AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */; };
@@ -125,9 +125,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A6C95315165BAB8D004BE10A /* PBXContainerItemProxy */ = {
+		A6DE08F9165CDA8600C9DC7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */;
+			containerPortal = A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C194253815D838BD004FC314;
 			remoteInfo = PublicAutomation;
@@ -209,7 +209,7 @@
 		6736FB7413CC1CD200DADFA7 /* GTMUnitTestDevLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMUnitTestDevLog.h; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.h"; sourceTree = "<group>"; };
 		6736FB7513CC1CD200DADFA7 /* GTMUnitTestDevLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMUnitTestDevLog.m; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.m"; sourceTree = "<group>"; };
 		6736FBB813CC233E00DADFA7 /* TestAll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TestAll-Info.plist"; sourceTree = "<group>"; };
-		A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ../PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
+		A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ThirdParty/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
 		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
 		AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDPublicAutomationToucher.h; sourceTree = "<group>"; };
@@ -348,7 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6C953BB165BC700004BE10A /* libPublicAutomation.a in Frameworks */,
+				A6DE08FB165CDA9200C9DC7F /* libPublicAutomation.a in Frameworks */,
 				AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */,
 				EFC121C21378D359009E3F71 /* Foundation.framework in Frameworks */,
 			);
@@ -371,10 +371,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A6C9530F165BAB8D004BE10A /* Products */ = {
+		A6DE08F3165CDA8600C9DC7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6C95316165BAB8D004BE10A /* libPublicAutomation.a */,
+				A6DE08FA165CDA8600C9DC7F /* libPublicAutomation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -486,7 +486,7 @@
 		EFC121C01378D359009E3F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */,
+				A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */,
 				EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */,
 				EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */,
 				EF2F20D313866E9C00433A9B /* CFNetwork.framework */,
@@ -848,8 +848,8 @@
 					ProjectRef = EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */;
 				},
 				{
-					ProductGroup = A6C9530F165BAB8D004BE10A /* Products */;
-					ProjectRef = A6C9530E165BAB8D004BE10A /* PublicAutomation.xcodeproj */;
+					ProductGroup = A6DE08F3165CDA8600C9DC7F /* Products */;
+					ProjectRef = A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -861,11 +861,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A6C95316165BAB8D004BE10A /* libPublicAutomation.a */ = {
+		A6DE08FA165CDA8600C9DC7F /* libPublicAutomation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libPublicAutomation.a;
-			remoteRef = A6C95315165BAB8D004BE10A /* PBXContainerItemProxy */;
+			remoteRef = A6DE08F9165CDA8600C9DC7F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AFA9D326162C47AB00C1E107 /* Automation.app */ = {

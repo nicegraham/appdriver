@@ -1,0 +1,3 @@
+[submodule "iphone/ThirdParty/PublicAutomation"]
+	path = iphone/ThirdParty/PublicAutomation
+	url = https://github.com/nicegraham/PublicAutomation
