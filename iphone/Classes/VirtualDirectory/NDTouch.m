@@ -13,6 +13,7 @@
 #import "NDElement.h"
 #import "NDNativeButtonElement.h"
 #import "NDPublicAutomationToucher.h"
+#import "UIAutomationBridge.h"
 //#import "UIAutomationBridge.h"
 #import <PublicAutomation/UIAutomationBridge.h>
 
@@ -132,7 +133,8 @@
     NSMutableDictionary *elements = elementStore_.elements;
     
     UIView *elementView = [elements objectForKey:elementId];
-    [UIAutomationBridge longtapView:elementView];
+    NSTimeInterval duration = 0.2;
+    [UIAutomationBridge longtapView:elementView forDuration:duration];
 
 }
 
