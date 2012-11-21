@@ -24,9 +24,9 @@
 #import "NDNativeTextViewElement.h"
 #import "NDNativeWebViewElement.h"
 #import "NDMainThreadRunner.h"
-#import "NDToucher.h"
 #import "NSException+WebDriver.h"
 #import "NDPublicAutomationToucher.h"
+#import "PublicAutomation/UIAutomationBridge.h"
 
 @interface NDNativeElement ()
 
@@ -140,7 +140,7 @@
 
 // Simulates tap.
 - (void)click {
-  [NDToucher touch:view_];
+    [UIAutomationBridge tapView:view_];
 }
 
 // Finds elements inside this element. Returns an array of |NDElement|.
@@ -221,10 +221,7 @@
 
 // Simulates touch.
 - (void)touch {
-    NSLog(@"************* In NDNativeElement touch");
-    [NDToucher touch:view_];
-    //PublicAutomation
-    //[NDPublicAutomationToucher PATouch:view_];
+    [UIAutomationBridge tapView:view_];
 }
 
 @end

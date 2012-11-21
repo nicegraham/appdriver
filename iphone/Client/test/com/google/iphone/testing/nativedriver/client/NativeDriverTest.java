@@ -48,12 +48,12 @@ public class NativeDriverTest extends TestCase {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //UITextField
-        //WebElement fromGps = driver.findElement(By.placeholder("From GPS"));
-        //fromGps.click();
+        WebElement fromGps = driver.findElement(By.placeholder("From GPS"));
+        fromGps.click();
 
         //WebElement dummy = driver.findElement(By.placeholder("From GPS"));
 
-        WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(6);
+//        WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(6);
         //fromGps.click();
 
 
@@ -65,7 +65,7 @@ public class NativeDriverTest extends TestCase {
 //        touchActions.up(50, 50).perform();
 //        touchActions.move(50, 50).perform();
 //        touchActions.scroll(fromGps, 50, 50).perform();
-        touchActions.doubleTap(fromGps).perform();
+//        touchActions.doubleTap(fromGps).perform();
 //        touchActions.longPress(fromGps).perform();
 //        touchActions.flick(50, 50).perform();
 //        touchActions.flick(fromGps, 50, 50, 10);
