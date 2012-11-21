@@ -2,7 +2,7 @@
 //  NDTouch.h
 //  NativeDriver
 //
-//  Created by Grace, Darragh on 16/11/2012.
+//  Created by Darragh Grace & Graham Abell @ PaddyPower 2012
 //
 //
 
@@ -15,9 +15,7 @@
 // directory in the WebDriver REST service. Supports touch actions.
 @interface NDTouch : HTTPVirtualDirectory {
 @private
-    
     NDElementStore *elementStore_;
-@public
     NDElement *element_;  // the parent session (weak)
 }
 

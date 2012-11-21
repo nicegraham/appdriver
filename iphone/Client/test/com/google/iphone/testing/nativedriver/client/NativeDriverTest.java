@@ -53,18 +53,19 @@ public class NativeDriverTest extends TestCase {
 
         //WebElement dummy = driver.findElement(By.placeholder("From GPS"));
 
-        WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(2);
+        WebElement fromGps = driver.findElements(org.openqa.selenium.By.className("UIButton")).get(6);
         //fromGps.click();
 
 
         TouchActions touchActions = new TouchActions(driver);
         //touchActions.flick(fromGps, 10, 0, 0);
-        touchActions.longPress(fromGps).perform();
+        //touchActions.longPress(fromGps).perform();
 //        touchActions.down(50, 50).perform();
+//        Thread.sleep(500);
 //        touchActions.up(50, 50).perform();
 //        touchActions.move(50, 50).perform();
 //        touchActions.scroll(fromGps, 50, 50).perform();
-//        touchActions.doubleTap(fromGps).perform();
+        touchActions.doubleTap(fromGps).perform();
 //        touchActions.longPress(fromGps).perform();
 //        touchActions.flick(50, 50).perform();
 //        touchActions.flick(fromGps, 50, 50, 10);

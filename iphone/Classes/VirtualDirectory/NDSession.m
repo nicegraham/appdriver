@@ -15,6 +15,8 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+//
+//  updates by Darragh Grace & Graham Abell @ PaddyPower 2012
 
 #import "NDSession.h"
 

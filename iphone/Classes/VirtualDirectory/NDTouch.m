@@ -2,7 +2,7 @@
 //  NDTouch.m
 //  NativeDriver
 //
-//  Created by Grace, Darragh on 16/11/2012.
+//  Created by Darragh Grace & Graham Abell @ PaddyPower 2012
 //
 //
 
@@ -14,15 +14,27 @@
 #import "NDNativeButtonElement.h"
 #import "NDPublicAutomationToucher.h"
 #import "UIAutomationBridge.h"
-//#import "UIAutomationBridge.h"
-#import <PublicAutomation/UIAutomationBridge.h>
 
 
 @interface NDTouch ()
 
 - (id)initWithElementStore:(NDElementStore *)elementStore;
 
-- (void)touchClick:(NSDictionary *)params;
+- (void)singleTap:(NSDictionary *)params;
+
+- (void)down:(NSDictionary *)params;
+
+- (void)up:(NSDictionary *)params;
+
+- (void)move:(NSDictionary *)params;
+
+- (void)scroll:(NSDictionary *)params;
+
+- (void)doubleTap:(NSDictionary *)params;
+
+- (void)longPress:(NSDictionary *)params;
+
+- (void)flick:(NSDictionary *)params;
 
 @end
 
@@ -50,22 +62,22 @@
                            POSTAction:@selector(up:)]
                  withName:@"up"];
         
-        [self setResource:[WebDriverResource
-                           resourceWithTarget:self
-                           GETAction:nil
-                           POSTAction:@selector(move:)]
-                 withName:@"move"];
+//        [self setResource:[WebDriverResource
+//                           resourceWithTarget:self
+//                           GETAction:nil
+//                           POSTAction:@selector(move:)]
+//                 withName:@"move"];
+//        
+//        [self setResource:[WebDriverResource
+//                           resourceWithTarget:self
+//                           GETAction:nil
+//                           POSTAction:@selector(scroll:)]
+//                 withName:@"scroll"];
         
         [self setResource:[WebDriverResource
                            resourceWithTarget:self
                            GETAction:nil
-                           POSTAction:@selector(scroll:)]
-                 withName:@"scroll"];
-        
-        [self setResource:[WebDriverResource
-                           resourceWithTarget:self
-                           GETAction:nil
-                           POSTAction:@selector(touchClick:)]
+                           POSTAction:@selector(doubleTap:)]
                  withName:@"doubleclick"];
         
         [self setResource:[WebDriverResource
@@ -74,11 +86,11 @@
                            POSTAction:@selector(longPress:)]
                  withName:@"longclick"];
         
-        [self setResource:[WebDriverResource
-                           resourceWithTarget:self
-                           GETAction:nil
-                           POSTAction:@selector(flick:)]
-                 withName:@"flick"];
+//        [self setResource:[WebDriverResource
+//                           resourceWithTarget:self
+//                           GETAction:nil
+//                           POSTAction:@selector(flick:)]
+//                 withName:@"flick"];
     }
     return self;
 }
@@ -99,13 +111,13 @@
 - (void)down:(NSDictionary *)params{
     NSNumber *x =  [params objectForKey:@"x"];
     NSNumber *y =  [params objectForKey:@"y"];
-    NSLog(@"x: %@", x);
+    [UIAutomationBridge downPoint:CGPointMake([x floatValue], [y floatValue])];
 }
 
 - (void)up:(NSDictionary *)params{
     NSNumber *x =  [params objectForKey:@"x"];
     NSNumber *y =  [params objectForKey:@"y"];
-    NSLog(@"x: %@", x);
+    [UIAutomationBridge upPoint:CGPointMake([x floatValue], [y floatValue])];
 }
 
 - (void)move:(NSDictionary *)params{
@@ -125,7 +137,9 @@
 - (void)doubleTap:(NSDictionary *)params{
     NSString *elementId = [params objectForKey:@"element"];
     NSMutableDictionary *elements = elementStore_.elements;
-    element_= [elements objectForKey:elementId];
+    
+    UIView *elementView = [elements objectForKey:elementId];
+    [UIAutomationBridge doubleTapView:elementView];
 }
 
 - (void)longPress:(NSDictionary *)params{
@@ -134,7 +148,7 @@
     
     UIView *elementView = [elements objectForKey:elementId];
     NSTimeInterval duration = 0.2;
-    [UIAutomationBridge longtapView:elementView forDuration:duration];
+    [UIAutomationBridge longTapView:elementView forDuration:duration];
 
 }
 
@@ -144,7 +158,7 @@
     NSNumber *speed =  [params objectForKey:@"speed"];
     NSNumber *xoffset =  [params objectForKey:@"xoffset"];
     NSNumber *yoffset =  [params objectForKey:@"yoffset"];
-    NSLog(@"Element id: %@", elementId);
+    NSLog(@"");
 }
 
 
