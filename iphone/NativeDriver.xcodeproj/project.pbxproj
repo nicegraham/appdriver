@@ -10,11 +10,7 @@
 		A6DE08FB165CDA9200C9DC7F /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DE08FA165CDA8600C9DC7F /* libPublicAutomation.a */; };
 		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
 		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
-		AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */; };
-		AF4BE769165A50D20028A614 /* NDPublicAutomationToucher.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */; };
 		AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC121CC1378D35A009E3F71 /* UIKit.framework */; };
-		B08554232BF3F7595D30D067 /* TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = B08551C2202499D8B807D522 /* TouchSynthesis.m */; };
-		B0855F83A104CEF320E7BC13 /* TouchSynthesis.h in Headers */ = {isa = PBXBuildFile; fileRef = B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */; };
 		EF17647613E684FB007045DC /* NDAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = EF17647413E684FB007045DC /* NDAttribute.h */; };
 		EF17647713E684FB007045DC /* NDAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17647513E684FB007045DC /* NDAttribute.m */; };
 		EF17647F13E68A83007045DC /* NDAttributeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF17647E13E68A83007045DC /* NDAttributeTest.m */; };
@@ -28,8 +24,6 @@
 		EF3F71EF13D59644002C9BE8 /* NDMainThreadRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3F71ED13D59644002C9BE8 /* NDMainThreadRunner.m */; };
 		EF44AFDC13D6B1E200BEB840 /* NDWebElementTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = EF44AFDB13D6B1E200BEB840 /* NDWebElementTest.mm */; };
 		EF4FA70B138CFB2F00936103 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4FA70A138CFB2F00936103 /* libOCMock.a */; };
-		EF529FEE13CA91C800449820 /* NDToucher.h in Headers */ = {isa = PBXBuildFile; fileRef = EF529FEC13CA91C800449820 /* NDToucher.h */; };
-		EF529FEF13CA91C800449820 /* NDToucher.m in Sources */ = {isa = PBXBuildFile; fileRef = EF529FED13CA91C800449820 /* NDToucher.m */; };
 		EF529FF413CA930100449820 /* NDNativeElementTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF529FF113CA930100449820 /* NDNativeElementTest.m */; };
 		EF529FF513CA930100449820 /* NDToucherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF529FF313CA930100449820 /* NDToucherTest.m */; };
 		EF67654413E245F4000529C5 /* NDNativeButtonElement.h in Headers */ = {isa = PBXBuildFile; fileRef = EF67654013E245F4000529C5 /* NDNativeButtonElement.h */; };
@@ -212,10 +206,6 @@
 		A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ThirdParty/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
 		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
 		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
-		AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDPublicAutomationToucher.h; sourceTree = "<group>"; };
-		AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDPublicAutomationToucher.m; sourceTree = "<group>"; };
-		B08551C2202499D8B807D522 /* TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchSynthesis.m; path = ThirdParty/TouchSynthesis/TouchSynthesis.m; sourceTree = "<group>"; };
-		B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchSynthesis.h; path = ThirdParty/TouchSynthesis/TouchSynthesis.h; sourceTree = "<group>"; };
 		EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServerLibrary.xcodeproj; path = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/CocoaHTTPServerLibrary.xcodeproj"; sourceTree = "<group>"; };
 		EF17647413E684FB007045DC /* NDAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDAttribute.h; path = Classes/VirtualDirectory/NDAttribute.h; sourceTree = SOURCE_ROOT; };
 		EF17647513E684FB007045DC /* NDAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDAttribute.m; path = Classes/VirtualDirectory/NDAttribute.m; sourceTree = SOURCE_ROOT; };
@@ -234,8 +224,6 @@
 		EF44AFDB13D6B1E200BEB840 /* NDWebElementTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDWebElementTest.mm; sourceTree = "<group>"; };
 		EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ThirdParty/OCMock/OCMock.xcodeproj; sourceTree = "<group>"; };
 		EF4FA70A138CFB2F00936103 /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOCMock.a; sourceTree = SOURCE_ROOT; };
-		EF529FEC13CA91C800449820 /* NDToucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDToucher.h; sourceTree = "<group>"; };
-		EF529FED13CA91C800449820 /* NDToucher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDToucher.m; sourceTree = "<group>"; };
 		EF529FF013CA930100449820 /* NDNativeElementTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDNativeElementTest.h; sourceTree = "<group>"; };
 		EF529FF113CA930100449820 /* NDNativeElementTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDNativeElementTest.m; sourceTree = "<group>"; };
 		EF529FF213CA930100449820 /* NDToucherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDToucherTest.h; sourceTree = "<group>"; };
@@ -388,15 +376,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EF24B21813CC0F3B006E0B0C /* TouchSynthesis */ = {
-			isa = PBXGroup;
-			children = (
-				B08559FC71C5BCF5E25D9689 /* TouchSynthesis.h */,
-				B08551C2202499D8B807D522 /* TouchSynthesis.m */,
-			);
-			name = TouchSynthesis;
-			sourceTree = "<group>";
-		};
 		EF2F20841386553400433A9B /* GTM */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,10 +505,6 @@
 				EF3F71ED13D59644002C9BE8 /* NDMainThreadRunner.m */,
 				EF786D1A13C5543E0050B1C1 /* NDNativeElement.h */,
 				EF786D1B13C5543E0050B1C1 /* NDNativeElement.m */,
-				EF529FEC13CA91C800449820 /* NDToucher.h */,
-				EF529FED13CA91C800449820 /* NDToucher.m */,
-				AF4BE766165A50D20028A614 /* NDPublicAutomationToucher.h */,
-				AF4BE767165A50D20028A614 /* NDPublicAutomationToucher.m */,
 			);
 			name = Automation;
 			path = Classes/Automation;
@@ -586,7 +561,6 @@
 				EF2F20841386553400433A9B /* GTM */,
 				EFF8DDBF1384F202005945FC /* iWebDriver */,
 				EFF8DDC11384F216005945FC /* JSON Framework */,
-				EF24B21813CC0F3B006E0B0C /* TouchSynthesis */,
 			);
 			name = ThirdParty;
 			sourceTree = "<group>";
@@ -756,7 +730,6 @@
 				EF786D1413C54F0D0050B1C1 /* NDElementDirectory.h in Headers */,
 				EF786D1813C551A40050B1C1 /* NDElement.h in Headers */,
 				EF786D1C13C5543E0050B1C1 /* NDNativeElement.h in Headers */,
-				EF529FEE13CA91C800449820 /* NDToucher.h in Headers */,
 				EFC7276813CD3FDE00ABC106 /* errorcodes.h in Headers */,
 				EF3F71EE13D59644002C9BE8 /* NDMainThreadRunner.h in Headers */,
 				EFF0EB5513D59D2000D7E0FD /* NDJavaScriptRunner.h in Headers */,
@@ -772,8 +745,6 @@
 				EFDA59CA13E3F2260022E0EF /* NDTimeouts.h in Headers */,
 				EF17647613E684FB007045DC /* NDAttribute.h in Headers */,
 				AF1C83131656B95C0088555B /* NDTouch.h in Headers */,
-				B0855F83A104CEF320E7BC13 /* TouchSynthesis.h in Headers */,
-				AF4BE768165A50D20028A614 /* NDPublicAutomationToucher.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,7 +948,6 @@
 				EF786D1513C54F0D0050B1C1 /* NDElementDirectory.m in Sources */,
 				EF786D1913C551A40050B1C1 /* NDElement.m in Sources */,
 				EF786D1D13C5543E0050B1C1 /* NDNativeElement.m in Sources */,
-				EF529FEF13CA91C800449820 /* NDToucher.m in Sources */,
 				EF3F71EF13D59644002C9BE8 /* NDMainThreadRunner.m in Sources */,
 				EFF0EB5613D59D2000D7E0FD /* NDJavaScriptRunner.mm in Sources */,
 				EFF0EB5813D59D2000D7E0FD /* NDWebElement.mm in Sources */,
@@ -991,8 +961,6 @@
 				EFDA59CB13E3F2260022E0EF /* NDTimeouts.m in Sources */,
 				EF17647713E684FB007045DC /* NDAttribute.m in Sources */,
 				AF1C83141656B95C0088555B /* NDTouch.m in Sources */,
-				B08554232BF3F7595D30D067 /* TouchSynthesis.m in Sources */,
-				AF4BE769165A50D20028A614 /* NDPublicAutomationToucher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

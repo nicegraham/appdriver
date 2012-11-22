@@ -1,3 +1,8 @@
+.DS_Store
+
+.idea
+
+.idea/
 
 *.svn-base
 
@@ -127,12 +132,8 @@ iphone/ThirdParty/google-toolbox-for-mac/UnitTesting/TestData/.svn/all-wcprops
 
 iphone/ThirdParty/google-toolbox-for-mac/UnitTesting/TestData/.svn/entries
 
-FuelView/.DS_Store
-
 FuelView/FuelView.xcodeproj/project.xcworkspace/xcuserdata/dgrace.xcuserdatad/UserInterfaceState.xcuserstate
 
 FuelView/FuelView.xcodeproj/project.xcworkspace/xcuserdata/dgrace.xcuserdatad/UserInterfaceState.xcuserstate
-
-FuelView/.DS_Store
 
 FuelView/FuelView.xcodeproj/xcuserdata/dgrace.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
