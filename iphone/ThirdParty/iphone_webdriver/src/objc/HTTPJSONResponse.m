@@ -28,7 +28,8 @@
 
 // Designated initaliser
 - (id)initWithObject:(id)object {
-  NSString *contents = [object JSONFragment];
+    NSString *contents = [object JSONRepresentation];
+  //DARA : NSString *contents = [object JSONFragment];
   NSLog(@"Sending JSON: %@", contents);
   NSData *theData = [contents dataUsingEncoding:NSUTF8StringEncoding];
   return [super initWithData:theData];

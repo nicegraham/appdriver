@@ -25,7 +25,6 @@
 #import "NDNativeWebViewElement.h"
 #import "NDMainThreadRunner.h"
 #import "NSException+WebDriver.h"
-#import "NDPublicAutomationToucher.h"
 #import "PublicAutomation/UIAutomationBridge.h"
 
 @interface NDNativeElement ()

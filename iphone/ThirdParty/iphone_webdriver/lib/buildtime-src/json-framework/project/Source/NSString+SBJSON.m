@@ -34,21 +34,25 @@
 
 - (id)JSONFragmentValue
 {
-    SBJsonParser *jsonParser = [SBJsonParser new];    
-    id repr = [jsonParser fragmentWithString:self];    
-    if (repr)
-        NSLog(@"-JSONFragmentValue failed. Error trace is: %@", [jsonParser errorTrace]);
-    [jsonParser release];
+    SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
+    //SBJsonParser *jsonParser = [SBJsonParser new];
+    // DARA : id repr = [jsonParser fragmentWithString:self];
+    id repr = [jsonParser objectWithString:self];
+    if (!repr)
+        NSLog(@"-JSONFragmentValue failed. Error trace is: %@", jsonParser.error);
+    //[jsonParser release];
     return repr;
 }
 
 - (id)JSONValue
 {
-    SBJsonParser *jsonParser = [SBJsonParser new];
+    SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
+    //SBJsonParser *jsonParser = [SBJsonParser new];
     id repr = [jsonParser objectWithString:self];
     if (!repr)
-        NSLog(@"-JSONValue failed. Error trace is: %@", [jsonParser errorTrace]);
-    [jsonParser release];
+        //NSLog(@"-JSONValue failed. Error trace is: %@", [jsonParser errorTrace]);
+        NSLog(@"-JSONValue failed. Error trace is: %@", jsonParser.error);
+    //[jsonParser release];
     return repr;
 }
 

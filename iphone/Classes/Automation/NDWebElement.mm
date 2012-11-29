@@ -22,6 +22,7 @@
 #import "errorcodes.h"
 #import "NDJavaScriptRunner.h"
 #import "NSException+WebDriver.h"
+#import "PublicAutomation/UIAutomationBridge.h"
 
 static NSString *kClassNameStrategy = @"className";
 static NSString *kCssSelectorStrategy = @"css";
@@ -129,6 +130,8 @@ static NSDictionary *wireProtocolToAtomsStrategy =
 }
 
 - (void)click {
+  //[UIAutomationBridge tapView:webView_];
+    
   [self executeAtom:webdriver::atoms::CLICK
            withArgs:[NSArray arrayWithObject:[self idDictionary]]];
 }
