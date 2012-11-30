@@ -129,11 +129,8 @@ static NSDictionary *wireProtocolToAtomsStrategy =
            withArgs:[NSArray arrayWithObject:[self idDictionary]]];
 }
 
-- (void)click {
-  //[UIAutomationBridge tapView:webView_];
-    
-  [self executeAtom:webdriver::atoms::CLICK
-           withArgs:[NSArray arrayWithObject:[self idDictionary]]];
+- (void)click {    
+    [UIAutomationBridge tapView:webView_ atPoint:[self locationAsCGPoint]];    
 }
 
 // Returns YES if the |UIWebView| is on the key window.
@@ -206,6 +203,32 @@ static NSDictionary *wireProtocolToAtomsStrategy =
   return [self executeAtom:webdriver::atoms::GET_TEXT
                   withArgs:[NSArray arrayWithObject:[self idDictionary]]];
 }
+
+- (NSDictionary *)location {
+    return [self executeAtom:webdriver::atoms::GET_LOCATION
+                    withArgs:[NSArray arrayWithObject:[self idDictionary]]];
+}
+
+//Get the location using javascript atom and convert it to CGPoint for use with UIAutomations touch method
+- (CGPoint)locationAsCGPoint {
+    NSDictionary *returnedString = [self executeAtom:webdriver::atoms::GET_LOCATION
+                    withArgs:[NSArray arrayWithObject:[self idDictionary]]];
+    
+    for (id key in returnedString) {
+        NSLog(@"key: %@, value: %@", key, [returnedString objectForKey:key]);
+    }
+    
+    NSString *x = [returnedString objectForKey:@"x"];
+    NSString *y = [returnedString objectForKey:@"y"];
+    
+    int xnum = [x intValue];
+    int ynum = [y intValue];
+    
+    CGPoint point = CGPointMake(xnum, ynum);
+    
+    return point;
+}
+
 
 #pragma mark findElements methods
 

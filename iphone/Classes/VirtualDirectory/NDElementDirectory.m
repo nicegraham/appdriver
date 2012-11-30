@@ -134,6 +134,12 @@
     [self setResource:[NDAttribute attributeForElement:element_]
              withName:@"attribute"];
       
+    [self setResource:[WebDriverResource
+                         resourceWithTarget:self
+                         GETAction:@selector(location)
+                         POSTAction:nil]
+             withName:@"location"];
+      
     
   }
   return self;
@@ -233,6 +239,12 @@
 - (NSString *)text {
   [self verifyElementStillAlive];
   return [element_ text];
+}
+
+// The text contained in the element.
+- (NSDictionary *)location {
+    [self verifyElementStillAlive];
+    return [element_ location];
 }
 
 // Throws an WebDriver exception is the element is not alive.

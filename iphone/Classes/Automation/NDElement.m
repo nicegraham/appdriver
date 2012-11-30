@@ -66,6 +66,10 @@ NSString *kByXpath = @"xpath";
 }
 
 // Implemented in the subclasses if this feature is available.
+- (NSDictionary *)location {    
+}
+
+// Implemented in the subclasses if this feature is available.
 - (NSString *)attribute:(NSString *)name {
   return nil;
 }

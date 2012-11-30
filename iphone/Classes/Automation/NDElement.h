@@ -97,4 +97,7 @@ extern NSString *kByXpath;
 // The text contained in the element.
 - (NSString *)text;
 
+// The location of the element.
+- (NSString *)location;
+
 @end
