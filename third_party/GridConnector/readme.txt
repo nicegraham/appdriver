@@ -1,0 +1,6 @@
+- You must have FlynnID available to connect to the Grid
+- Flynnid is on github - https://github.com/davehunt/flynnid
+- Modify GridConnector.sh with your correct params.
+- To make GridConnector.sh run by double clicking do the following
+	- chmod 777 <drag GridConnector.sh into terminal window> - Hit return and that will give it execute permissions.
+	- Then make sure that the .sh file type is set to run in the terminal using the Get Info box and it should run by double-clicking it.
