@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A6DE08FB165CDA9200C9DC7F /* libPublicAutomation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DE08FA165CDA8600C9DC7F /* libPublicAutomation.a */; };
+		AF0A2938166E48CC000E380B /* Status.h in Headers */ = {isa = PBXBuildFile; fileRef = AF0A2936166E48CC000E380B /* Status.h */; };
+		AF0A2939166E48CC000E380B /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A2937166E48CC000E380B /* Status.m */; };
 		AF1C83131656B95C0088555B /* NDTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = AF1C83111656B95B0088555B /* NDTouch.h */; };
 		AF1C83141656B95C0088555B /* NDTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1C83121656B95B0088555B /* NDTouch.m */; };
 		AFCEF4941653DC1C00A91329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC121CC1378D35A009E3F71 /* UIKit.framework */; };
@@ -201,6 +203,8 @@
 		6736FB7513CC1CD200DADFA7 /* GTMUnitTestDevLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMUnitTestDevLog.m; path = "ThirdParty/google-toolbox-for-mac/UnitTesting/GTMUnitTestDevLog.m"; sourceTree = "<group>"; };
 		6736FBB813CC233E00DADFA7 /* TestAll-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TestAll-Info.plist"; sourceTree = "<group>"; };
 		A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PublicAutomation.xcodeproj; path = ThirdParty/PublicAutomation/PublicAutomation.xcodeproj; sourceTree = "<group>"; };
+		AF0A2936166E48CC000E380B /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		AF0A2937166E48CC000E380B /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		AF1C83111656B95B0088555B /* NDTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDTouch.h; path = Classes/VirtualDirectory/NDTouch.h; sourceTree = SOURCE_ROOT; };
 		AF1C83121656B95B0088555B /* NDTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDTouch.m; path = Classes/VirtualDirectory/NDTouch.m; sourceTree = SOURCE_ROOT; };
 		EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServerLibrary.xcodeproj; path = "ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/CocoaHTTPServerLibrary.xcodeproj"; sourceTree = "<group>"; };
@@ -361,6 +365,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AF0A2941166E4C26000E380B /* CocoaHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CocoaHTTPServer;
+			sourceTree = "<group>";
+		};
 		EF0DF1AE13CD64F4003A3877 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +470,7 @@
 		EFC121C01378D359009E3F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF0A2941166E4C26000E380B /* CocoaHTTPServer */,
 				A6DE08F2165CDA8600C9DC7F /* PublicAutomation.xcodeproj */,
 				EF0DF1AD13CD64F4003A3877 /* CocoaHTTPServerLibrary.xcodeproj */,
 				EF4FA6F1138CFA5700936103 /* OCMock.xcodeproj */,
@@ -593,6 +605,8 @@
 		EFF8DD8F1384EAB4005945FC /* patched */ = {
 			isa = PBXGroup;
 			children = (
+				AF0A2936166E48CC000E380B /* Status.h */,
+				AF0A2937166E48CC000E380B /* Status.m */,
 				EFF8DD901384EAB4005945FC /* RESTServiceMapping.m */,
 				EFF8DD911384EAB4005945FC /* WebDriverResource.m */,
 			);
@@ -736,6 +750,7 @@
 				EFDA59CA13E3F2260022E0EF /* NDTimeouts.h in Headers */,
 				EF17647613E684FB007045DC /* NDAttribute.h in Headers */,
 				AF1C83131656B95C0088555B /* NDTouch.h in Headers */,
+				AF0A2938166E48CC000E380B /* Status.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +964,7 @@
 				EFDA59CB13E3F2260022E0EF /* NDTimeouts.m in Sources */,
 				EF17647713E684FB007045DC /* NDAttribute.m in Sources */,
 				AF1C83141656B95C0088555B /* NDTouch.m in Sources */,
+				AF0A2939166E48CC000E380B /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,6 +1014,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COCOAHTTPSERVER_HEADERS = "$(PROJECT_DIR)/lib/buildtime-src/cocoahttpserver/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/usr/local/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
@@ -1007,6 +1024,7 @@
 				HEADER_SEARCH_PATHS = (
 					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
 					"Frameworks/PublicAutomation/**",
+					"$(COCOAHTTPSERVER_HEADERS)/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -1017,6 +1035,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COCOAHTTPSERVER_HEADERS = "$(PROJECT_DIR)/lib/buildtime-src/cocoahttpserver/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/usr/local/include";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classes/NativeDriver-Prefix.pch";
@@ -1025,6 +1044,7 @@
 				HEADER_SEARCH_PATHS = (
 					"ThirdParty/iphone_webdriver/lib/buildtime-src/cocoahttpserver/**",
 					"Frameworks/PublicAutomation/**",
+					"$(COCOAHTTPSERVER_HEADERS)/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;

@@ -25,6 +25,7 @@
 #import "JSONRESTResource.h"
 #import "NDSession.h"
 #import "NDSessionRoot.h"
+#import "Status.h"
 
 @implementation RESTServiceMapping
 
@@ -45,6 +46,15 @@
   HTTPVirtualDirectory *restRoot =
       [[[HTTPVirtualDirectory alloc] init] autorelease];
   [serverRoot_ setResource:restRoot withName:@"hub"];
+    
+    // Respond to /status
+    //[restRoot setResource:[[[Status alloc] init] autorelease] withName:@"status"];
+    
+    // Make the root also accessible from /wd/hub. This will allow clients hard
+    // coded for the java Selenium server to also work with us.
+    HTTPVirtualDirectory *wd = [[[HTTPVirtualDirectory alloc] init] autorelease];
+    [wd setResource:restRoot withName:@"hub"];
+    [serverRoot_ setResource:wd withName:@"wd"];
 
   NSData *data = [@"<html><body><h1>iWebDriver ready.</h1></body></html>"
                   dataUsingEncoding:NSASCIIStringEncoding];

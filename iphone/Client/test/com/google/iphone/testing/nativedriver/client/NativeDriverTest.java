@@ -25,6 +25,7 @@ import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.server.RemoteControlConfiguration;
 import org.openqa.selenium.server.SeleniumServer;
+import org.openqa.selenium.Capabilities;
 
 
 import java.net.URL;
@@ -45,8 +46,9 @@ public class NativeDriverTest extends TestCase {
 
     public void testNativeDriver() throws Exception {
 
-        driver = new IosNativeDriver();
-        //driver = new IosNativeDriver("http://192.168.0.102:3001/hub");
+        //driver = new IosNativeDriver();
+        URL myUrl = new URL("http://localhost:3001/wd/hub");
+        driver = new IosNativeDriver(myUrl, getCapabilities());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         messWithHybridApp();
@@ -123,7 +125,8 @@ public class NativeDriverTest extends TestCase {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities = DesiredCapabilities.iphone();
-        capabilities.setVersion("8");
+        capabilities.setVersion("1");
+        capabilities.setPlatform(Platform.MAC);
 
         return capabilities;
     }

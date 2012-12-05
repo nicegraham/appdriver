@@ -16,6 +16,7 @@ limitations under the License.
 */
 package com.google.iphone.testing.nativedriver.client;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.HasTouchScreen;
 import org.openqa.selenium.TouchScreen;
 import org.openqa.selenium.WebElement;
@@ -50,6 +51,23 @@ public class IosNativeDriver
      */
     public IosNativeDriver(URL remoteAddress) {
         super(remoteAddress, DesiredCapabilities.iphone());
+        setElementConverter(new JsonToWebElementConverter(this) {
+            @Override
+            protected RemoteWebElement newRemoteWebElement() {
+                return new IosNativeElement(IosNativeDriver.this);
+            }
+        });
+        init();
+    }
+
+    /**
+     * Creates an {@code IosNativeDriver} connected to the remote address.
+     *
+     * @param remoteAddress The full URL of the remote client (device or
+     *                      simulator) running NativeDriver.
+     */
+    public IosNativeDriver(URL remoteAddress, DesiredCapabilities capabilities) {
+        super(remoteAddress, capabilities);
         setElementConverter(new JsonToWebElementConverter(this) {
             @Override
             protected RemoteWebElement newRemoteWebElement() {
