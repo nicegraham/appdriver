@@ -161,7 +161,6 @@
 		AF1031EE16316BD1001AC4D8 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		AF1031F016316EE7001AC4D8 /* NDNativeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDNativeDriver.h; path = ../../iphone/Classes/NDNativeDriver.h; sourceTree = "<group>"; };
 		AF1031F216316EF0001AC4D8 /* NativeDriver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NativeDriver-Prefix.pch"; path = "../../iphone/Classes/NativeDriver-Prefix.pch"; sourceTree = "<group>"; };
-		AF1031F316316EF0001AC4D8 /* NDNativeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDNativeDriver.h; path = ../../iphone/Classes/NDNativeDriver.h; sourceTree = "<group>"; };
 		AF1031F416316EF0001AC4D8 /* NDNativeDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDNativeDriver.m; path = ../../iphone/Classes/NDNativeDriver.m; sourceTree = "<group>"; };
 		C93A20A7138661BA005B7B54 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Resources/MainWindow.xib; sourceTree = "<group>"; };
 		C93A20B713866222005B7B54 /* PageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCell.h; sourceTree = "<group>"; };
@@ -275,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				AF1031F216316EF0001AC4D8 /* NativeDriver-Prefix.pch */,
-				AF1031F316316EF0001AC4D8 /* NDNativeDriver.h */,
 				AF1031F416316EF0001AC4D8 /* NDNativeDriver.m */,
 				AF1031F016316EE7001AC4D8 /* NDNativeDriver.h */,
 				1D3623240D0F684500981E51 /* FuelViewAppDelegate.h */,
