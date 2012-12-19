@@ -14,9 +14,7 @@
           <root url="jar://$MODULE_DIR$/test/ios-client-standalone.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../../../tmp/selenium-2.26.0/selenium-2.26.0/selenium-java-2.26.0-srcs.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="library" name="build" level="project" />

@@ -14,8 +14,6 @@ iphone/ThirdParty/iphone_webdriver/test/objc/.svn/all-wcprops
 
 iphone/ThirdParty/iphone_webdriver/test/.svn/all-wcprops
 
-iphone/ThirdParty/iphone_webdriver/src/objc/Classes/MainView.h
-
 iphone/ThirdParty/iphone_webdriver/lib/runtime/.svn/entries
 
 iphone/ThirdParty/iphone_webdriver/lib/runtime/.svn/all-wcprops
@@ -137,3 +135,7 @@ FuelView/FuelView.xcodeproj/project.xcworkspace/xcuserdata/dgrace.xcuserdatad/Us
 FuelView/FuelView.xcodeproj/project.xcworkspace/xcuserdata/dgrace.xcuserdatad/UserInterfaceState.xcuserstate
 
 FuelView/FuelView.xcodeproj/xcuserdata/dgrace.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+iphone/ThirdParty/OCMock/Build
+
+iphone/Client/test/com/google/iphone/testing/nativedriver/client/NativeDriverTest.java
