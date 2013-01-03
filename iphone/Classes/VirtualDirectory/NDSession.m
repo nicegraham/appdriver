@@ -24,6 +24,9 @@
 #import "NDSessionRoot.h"
 #import "NDTimeouts.h"
 #import "WebDriverResource.h"
+#import "errorcodes.h"
+#import "NSException+WebDriver.h"
+#import <PublicAutomation/UIAutomationBridge.h>
 
 @interface NDSession ()
 
@@ -63,12 +66,20 @@
                                 GETAction:@selector(title)
                                POSTAction:nil]
              withName:@"title"];
+      
+      
+      [self setResource:[WebDriverResource
+                         resourceWithTarget:self
+                         GETAction:nil
+                         POSTAction:@selector(setLocation:)]
+               withName:@"location"];
 
     [self setResource:[NDTimeouts timeoutsWithSession:self]
              withName:@"timeouts"];
       
-      [self setResource:[NDTouch touchForElement:elementStore_]
+    [self setResource:[NDTouch touchForElement:elementStore_]
              withName:@"touch"];
+
   }
   return self;
 }
@@ -114,6 +125,23 @@
              navigationItem] title];
   }
   return [controller title];
+}
+
+- (void)setLocation:(NSDictionary *)params{
+    
+    NSDictionary *innerDict = [params objectForKey:@"location"];
+    
+    if( ![innerDict objectForKey:@"latitude"] && ![innerDict objectForKey:@"longitude"]){
+        @throw [NSException
+                webDriverExceptionWithMessage:@"Please provide both longitude and latitude"
+                andStatusCode:ELOCATIONERROR];    }
+    
+    
+    CGPoint locationAsPoint = CGPointMake([[innerDict objectForKey:@"latitude"] floatValue],[[innerDict objectForKey:@"longitude"] floatValue]);
+    
+    NSLog(@"simulating location of %f,%f",locationAsPoint.x, locationAsPoint.y);
+    
+    [UIAutomationBridge setLocation:locationAsPoint];
 }
 
 // Override to set session id for each |WebDriverResource|.

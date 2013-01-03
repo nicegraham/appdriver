@@ -21,6 +21,7 @@ import junit.framework.TestCase;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.server.RemoteControlConfiguration;
@@ -48,8 +49,11 @@ public class NativeDriverTest extends TestCase {
 
         //driver = new IosNativeDriver();
         URL myUrl = new URL("http://localhost:3001/wd/hub");
-        driver = new IosNativeDriver(myUrl, getCapabilities());
+        Location geoLocation = new Location(51.5, -0.12, 0);
+        driver = new IosNativeDriver(myUrl, getCapabilities(), geoLocation);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
 
         messWithHybridApp();
 

@@ -30,4 +30,5 @@
 #define EMODALDIALOGOPENED   26
 #define EMODALDIALOGOPEN     27
 #define ESCRIPTTIMEOUT       28
+#define ELOCATIONERROR       29
 

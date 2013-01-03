@@ -25,6 +25,10 @@ import org.openqa.selenium.remote.RemoteTouchScreen;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.remote.internal.JsonToWebElementConverter;
+import org.openqa.selenium.html5.Location;
+import org.openqa.selenium.html5.LocationContext;
+import org.openqa.selenium.remote.html5.RemoteLocationContext;
+
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,6 +69,7 @@ public class IosNativeDriver
      *
      * @param remoteAddress The full URL of the remote client (device or
      *                      simulator) running NativeDriver.
+     * @param capabilities  The DesiredCapabilities
      */
     public IosNativeDriver(URL remoteAddress, DesiredCapabilities capabilities) {
         super(remoteAddress, capabilities);
@@ -75,6 +80,27 @@ public class IosNativeDriver
             }
         });
         init();
+    }
+
+    /**
+     * Creates an {@code IosNativeDriver} connected to the remote address.
+     *
+     * @param remoteAddress The full URL of the remote client (device or
+     *                      simulator) running NativeDriver.
+     * @param capabilities  The DesiredCapabilities
+     * @param location      Set the Geographical location of the remote client
+     *                      (device or simulator) running NativeDriver.
+     *
+     */
+    public IosNativeDriver(URL remoteAddress, DesiredCapabilities capabilities, Location location) {
+        super(remoteAddress, capabilities);
+        setElementConverter(new JsonToWebElementConverter(this) {
+            @Override
+            protected RemoteWebElement newRemoteWebElement() {
+                return new IosNativeElement(IosNativeDriver.this);
+            }
+        });
+        initWithLocation(location);
     }
 
     /**
@@ -154,7 +180,23 @@ public class IosNativeDriver
         touch = new RemoteTouchScreen(getExecuteMethod());
     }
 
+    /**
+     * Initialise with GeoLocation
+     */
+    private void initWithLocation(Location location) {
+        touch = new RemoteTouchScreen(getExecuteMethod());
+        setLocation(location);
+    }
+
     public TouchScreen getTouch() {
         return touch;
+    }
+
+    /**
+     * Private method to set the geo location on the device or emulator
+     */
+    private void setLocation(Location loc) {
+        RemoteLocationContext rc = new RemoteLocationContext(getExecuteMethod());
+        rc.setLocation(loc);
     }
 }
