@@ -165,3 +165,7 @@ iphone/Client/out/test/Client/com/google/iphone/testing/nativedriver/client/Nati
 iphone/Client/out/test/Client/com/google/iphone/testing/nativedriver/client/NativeDriverTest.class
 
 iphone/Client/out/production/Client/com/google/iphone/testing/nativedriver/client/IosNativeDriver$3.class
+
+iphone/Classes/VirtualDirectory/NDLocation.h
+
+iphone/Classes/VirtualDirectory/NDLocation.m
