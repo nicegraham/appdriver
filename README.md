@@ -8,6 +8,18 @@ The primary updates involve removing the old touch emulation libary - TouchSynth
 
 ---
 ### 03/01/2012
-* Added ability to set the location
+1 Added ability to set the location
+
+* Added a new constructor for IosNativeDriver which sets the geographical location of the device or simulator
+* *usage :* 
+
+* ```java
+import org.openqa.selenium.html5.Location;
+URL myUrl = new URL("http://localhost:3001/wd/hub");
+Location geoLocation = new Location(51.5, -0.12, 0);
+driver = new IosNativeDriver(myUrl, getCapabilities(), geoLocation);
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+ ```
 
 ---
