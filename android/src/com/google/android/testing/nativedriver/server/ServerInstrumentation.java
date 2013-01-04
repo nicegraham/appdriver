@@ -265,12 +265,17 @@ public class ServerInstrumentation extends Instrumentation {
   protected Handler createHandler() {
     org.mortbay.jetty.servlet.Context root
         = new org.mortbay.jetty.servlet.Context(server, "/hub",
-            org.mortbay.jetty.servlet.Context.SESSIONS);
+            org.mortbay.jetty.servlet.Context.NO_SECURITY);
     root.addServlet(new ServletHolder(new AndroidNativeDriverServlet()), "/*");
 
+    org.mortbay.jetty.servlet.Context selegridproxy
+        = new org.mortbay.jetty.servlet.Context(server, "/wd",
+            org.mortbay.jetty.servlet.Context.NO_SECURITY);
+    selegridproxy.addServlet(new ServletHolder(new SeleGridProxyServlet()), "/*");
+    
     HandlerList handlers = new HandlerList();
     handlers.setHandlers(
-        new org.mortbay.jetty.Handler[] {root, new DefaultHandler()});
+        new org.mortbay.jetty.Handler[] {root, selegridproxy new DefaultHandler()});
     return handlers;
   }
 
