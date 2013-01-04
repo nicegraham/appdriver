@@ -275,7 +275,7 @@ public class ServerInstrumentation extends Instrumentation {
     
     HandlerList handlers = new HandlerList();
     handlers.setHandlers(
-        new org.mortbay.jetty.Handler[] {root, selegridproxy new DefaultHandler()});
+        new org.mortbay.jetty.Handler[] {root, selegridproxy, new DefaultHandler()});
     return handlers;
   }
 
