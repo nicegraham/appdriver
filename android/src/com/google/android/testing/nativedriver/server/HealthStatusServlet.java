@@ -28,7 +28,7 @@ public class HealthStatusServlet extends HttpServlet
      }
      catch(Exception e)
      {
-                Log.e("appdriver","HealthStatusServlet encountered a problem with "+httpreq.getPathInfo()+" - "+e.toString());
+                Log.e("appdriver","HealthStatusServlet encountered a problem - "+e.toString());
      }
  }
 
