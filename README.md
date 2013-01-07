@@ -17,9 +17,28 @@ The primary updates involve removing the old touch emulation libary - TouchSynth
 import org.openqa.selenium.html5.Location;
 URL myUrl = new URL("http://localhost:3001/wd/hub");
 Location geoLocation = new Location(51.5, -0.12, 0);
+IosNativeDriver driver;
 driver = new IosNativeDriver(myUrl, getCapabilities(), geoLocation);
 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
  ```
+ 
+### 07/01/2012
+1 Added ability to set/get the orientation of the device or simulator
+
+* *usage :* 
+
+* ```java
+import org.openqa.selenium.html5.Location;
+URL myUrl = new URL("http://localhost:3001/wd/hub");
+Location geoLocation = new Location(51.5, -0.12, 0);
+IosNativeDriver driver;
+driver = new IosNativeDriver(myUrl, getCapabilities(), geoLocation);
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+driver.rotate(ScreenOrientation.LANDSCAPE);
+driver.rotate(ScreenOrientation.PORTRAIT);
+ScreenOrientation myDeviceOrientation = driver.getOrientation();
+
+ ``` 
 
 ---
