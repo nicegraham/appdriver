@@ -65,20 +65,25 @@
                        resourceWithTarget:self
                                 GETAction:@selector(title)
                                POSTAction:nil]
-             withName:@"title"];
+             withName:@"title"];      
       
-      
-      [self setResource:[WebDriverResource
+    [self setResource:[WebDriverResource
                          resourceWithTarget:self
                          GETAction:nil
                          POSTAction:@selector(setLocation:)]
                withName:@"location"];
+      
+    [self setResource:[WebDriverResource
+                         resourceWithTarget:self
+                         GETAction:@selector(getOrientation)
+                         POSTAction:@selector(setOrientation:)]
+               withName:@"orientation"];
 
     [self setResource:[NDTimeouts timeoutsWithSession:self]
-             withName:@"timeouts"];
+               withName:@"timeouts"];
       
     [self setResource:[NDTouch touchForElement:elementStore_]
-             withName:@"touch"];
+               withName:@"touch"];
 
   }
   return self;
@@ -128,20 +133,61 @@
 }
 
 - (void)setLocation:(NSDictionary *)params{
-    
     NSDictionary *innerDict = [params objectForKey:@"location"];
-    
     if( ![innerDict objectForKey:@"latitude"] && ![innerDict objectForKey:@"longitude"]){
         @throw [NSException
                 webDriverExceptionWithMessage:@"Please provide both longitude and latitude"
-                andStatusCode:ELOCATIONERROR];    }
-    
-    
+                andStatusCode:ELOCATIONERROR];
+    }
     CGPoint locationAsPoint = CGPointMake([[innerDict objectForKey:@"latitude"] floatValue],[[innerDict objectForKey:@"longitude"] floatValue]);
     
     NSLog(@"simulating location of %f,%f",locationAsPoint.x, locationAsPoint.y);
     
     [UIAutomationBridge setLocation:locationAsPoint];
+}
+
+
+// Use Public Automation to set the orientation of the device or aimulator
+- (void)setOrientation:(NSDictionary *)params{    
+    NSString *orientation = [[params valueForKey:@"orientation"] description];
+    NSLog (@"Setting device Orientation to -> %@", orientation);
+    [UIAutomationBridge setOrientation:[self convertOrientation:orientation]];    
+    [NSThread sleepForTimeInterval:2.0];     // Seems to need a slight delay here after setting the orientation
+}
+
+
+- (UIDeviceOrientation)convertOrientation:(NSString *)orientation{    
+    UIDeviceOrientation requestedOrientation = UIDeviceOrientationUnknown;
+    if( [orientation isEqualToString:@"PORTRAIT"] ){
+        requestedOrientation = UIDeviceOrientationPortrait;
+    }else if ([orientation  isEqualToString:@"LANDSCAPE"]){
+        requestedOrientation = UIDeviceOrientationLandscapeRight;
+    }    
+    return requestedOrientation;
+}
+
+// Get the device or simulators orientation
+- (NSString *)getOrientation{
+    
+    switch ( [UIDevice currentDevice].orientation ) {
+		case UIDeviceOrientationLandscapeRight:
+		case UIDeviceOrientationLandscapeLeft:
+			return @"LANDSCAPE";
+		case UIDeviceOrientationPortrait:
+		case UIDeviceOrientationPortraitUpsideDown:
+			return @"PORTRAIT";
+        case UIDeviceOrientationFaceUp:
+            NSLog(@"Device orientation is face up");
+            //fall thru
+        case UIDeviceOrientationFaceDown:
+            NSLog(@"Device orientation is face down");
+            //fall thru
+        case UIDeviceOrientationUnknown:
+            NSLog(@"Device orientation is unknown");
+            //fall thru
+		default:
+            return nil;
+	}
 }
 
 // Override to set session id for each |WebDriverResource|.

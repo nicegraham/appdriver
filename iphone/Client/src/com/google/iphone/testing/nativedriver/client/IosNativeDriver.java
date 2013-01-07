@@ -16,14 +16,9 @@ limitations under the License.
 */
 package com.google.iphone.testing.nativedriver.client;
 
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.HasTouchScreen;
-import org.openqa.selenium.TouchScreen;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteTouchScreen;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.RemoteWebElement;
+import com.google.common.collect.ImmutableMap;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.*;
 import org.openqa.selenium.remote.internal.JsonToWebElementConverter;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.html5.LocationContext;
@@ -40,7 +35,7 @@ import java.util.List;
  * @author Tomohiro Kaizu
  */
 public class IosNativeDriver
-        extends RemoteWebDriver implements FindsByText, FindsByPlaceholder, HasTouchScreen {
+        extends RemoteWebDriver implements FindsByText, FindsByPlaceholder, HasTouchScreen, Rotatable  {
     /**
      * Default URL for iOS NativeDriver.
      */
@@ -198,5 +193,15 @@ public class IosNativeDriver
     private void setLocation(Location loc) {
         RemoteLocationContext rc = new RemoteLocationContext(getExecuteMethod());
         rc.setLocation(loc);
+    }
+
+
+    public void rotate(ScreenOrientation orientation) {
+        execute(DriverCommand.SET_SCREEN_ORIENTATION, ImmutableMap.of("orientation", orientation));
+    }
+
+    public ScreenOrientation getOrientation() {
+        return ScreenOrientation.valueOf(
+                (String) execute(DriverCommand.GET_SCREEN_ORIENTATION).getValue());
     }
 }

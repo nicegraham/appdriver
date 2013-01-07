@@ -21,6 +21,7 @@ import junit.framework.TestCase;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -42,10 +43,12 @@ import java.util.concurrent.TimeUnit;
 public class NativeDriverTest extends TestCase {
 
     SeleniumServer seleniumServer;
-    WebDriver driver;
+    IosNativeDriver driver;
 
 
     public void testNativeDriver() throws Exception {
+
+
 
         //driver = new IosNativeDriver();
         URL myUrl = new URL("http://localhost:3001/wd/hub");
@@ -54,8 +57,8 @@ public class NativeDriverTest extends TestCase {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
-
-        messWithHybridApp();
+        checkOrientationCommands();
+        //messWithHybridApp();
 
         //findAndPrintAllElements();
 
@@ -133,6 +136,19 @@ public class NativeDriverTest extends TestCase {
         capabilities.setPlatform(Platform.MAC);
 
         return capabilities;
+    }
+
+    public void checkOrientationCommands(){
+
+        driver.rotate(ScreenOrientation.PORTRAIT);
+        assertEquals(driver.getOrientation(), ScreenOrientation.PORTRAIT);
+
+        driver.rotate(ScreenOrientation.LANDSCAPE);
+        assertEquals(driver.getOrientation(), ScreenOrientation.LANDSCAPE);
+
+        driver.rotate(ScreenOrientation.PORTRAIT);
+        assertEquals(driver.getOrientation(), ScreenOrientation.PORTRAIT);
+
     }
 
 
