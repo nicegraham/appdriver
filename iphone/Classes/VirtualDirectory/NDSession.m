@@ -152,7 +152,7 @@
     NSString *orientation = [[params valueForKey:@"orientation"] description];
     NSLog (@"Setting device Orientation to -> %@", orientation);
     [UIAutomationBridge setOrientation:[self convertOrientation:orientation]];    
-    [NSThread sleepForTimeInterval:2.0];     // Seems to need a slight delay here after setting the orientation
+    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 2, false);
 }
 
 
