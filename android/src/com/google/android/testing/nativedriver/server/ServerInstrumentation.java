@@ -263,14 +263,30 @@ public class ServerInstrumentation extends Instrumentation {
   }
 
   protected Handler createHandler() {
-    org.mortbay.jetty.servlet.Context root
+   /*TODO: Context "/hub" is here only for backwards compatibility.   
+   src/org/openqa/grid/web/Hub.java has the following line:
+   ''' root.addServlet("/wd/hub/*", DriverServlet.class.getName()); '''
+   This seems to imply "/wd/hub" is the correct Context to use everywhere.
+   */
+    org.mortbay.jetty.servlet.Context old_root
         = new org.mortbay.jetty.servlet.Context(server, "/hub",
             org.mortbay.jetty.servlet.Context.SESSIONS);
+    old_root.addServlet(new ServletHolder(new AndroidNativeDriverServlet()), "/*");
+    
+    org.mortbay.jetty.servlet.Context root
+        = new org.mortbay.jetty.servlet.Context(server, "/wd/hub",
+            org.mortbay.jetty.servlet.Context.SESSIONS);
     root.addServlet(new ServletHolder(new AndroidNativeDriverServlet()), "/*");
-
+    
+    org.mortbay.jetty.servlet.Context gridhealthstatus
+        = new org.mortbay.jetty.servlet.Context(server, "/wd/hub/status",
+            org.mortbay.jetty.servlet.Context.NO_SECURITY);
+    gridhealthstatus.addServlet(new ServletHolder(new HealthStatusServlet()), "/*");
+    
     HandlerList handlers = new HandlerList();
+    
     handlers.setHandlers(
-        new org.mortbay.jetty.Handler[] {root, new DefaultHandler()});
+        new org.mortbay.jetty.Handler[] {old_root, gridhealthstatus, root, new DefaultHandler()});
     return handlers;
   }
 
