@@ -23,8 +23,10 @@ import org.openqa.selenium.remote.internal.JsonToWebElementConverter;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.html5.LocationContext;
 import org.openqa.selenium.remote.html5.RemoteLocationContext;
+import org.openqa.selenium.OutputType;
 
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -203,5 +205,10 @@ public class IosNativeDriver
     public ScreenOrientation getOrientation() {
         return ScreenOrientation.valueOf(
                 (String) execute(DriverCommand.GET_SCREEN_ORIENTATION).getValue());
+    }
+
+    public File takeScreenshot(){
+        String png =  (String) execute(DriverCommand.SCREENSHOT).getValue();
+        return OutputType.FILE.convertFromBase64Png(png);
     }
 }

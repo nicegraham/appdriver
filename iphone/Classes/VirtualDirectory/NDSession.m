@@ -84,6 +84,14 @@
       
     [self setResource:[NDTouch touchForElement:elementStore_]
                withName:@"touch"];
+      
+      [self setResource:[WebDriverResource
+                         resourceWithTarget:self
+                         GETAction:@selector(screenshot)
+                         POSTAction:nil]
+               withName:@"screenshot"];
+      
+      
 
   }
   return self;
@@ -104,6 +112,81 @@
   // Tell the session root to remove this resource.
   [sessionRoot_ deleteSessionWithId:sessionId_];
 }
+
+
+- (NSString *)screenshot {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    CGImageRef cgImage = UIGetScreenImage();
+    void *imageBytes = NULL;
+    if (cgImage == NULL) {
+        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+        imageBytes = malloc(320 * 480 * 4);
+        CGContextRef context = CGBitmapContextCreate(imageBytes, 320, 480, 8, 320 * 4, colorspace, kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Big);
+        CGColorSpaceRelease(colorspace);
+        for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+            CGRect bounds = [window bounds];
+            CALayer *layer = [window layer];
+            CGContextSaveGState(context);
+            if ([layer contentsAreFlipped]) {
+                CGContextTranslateCTM(context, 0.0f, bounds.size.height);
+                CGContextScaleCTM(context, 1.0f, -1.0f);
+            }
+            [layer renderInContext:(CGContextRef)context];
+            CGContextRestoreGState(context);
+        }
+        cgImage = CGBitmapContextCreateImage(context);
+        CGContextRelease(context);
+    }
+    NSData *pngData = UIImagePNGRepresentation([UIImage imageWithCGImage:cgImage]);
+    
+    NSString *b64str = [self base64forData:pngData];
+    
+    
+    //CGImageRelease(cgImage);
+    //if (imageBytes)
+    //    free(imageBytes);
+    //[pngData writeToFile:path atomically:YES];
+    //[pool release];
+    
+   
+    
+    return b64str;
+    
+}
+
+- (NSString*)base64forData:(NSData*)theData {
+    
+    const uint8_t* input = (const uint8_t*)[theData bytes];
+    NSInteger length = [theData length];
+    
+    static char table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    
+    NSMutableData* data = [NSMutableData dataWithLength:((length + 2) / 3) * 4];
+    uint8_t* output = (uint8_t*)data.mutableBytes;
+    
+    NSInteger i;
+    for (i=0; i < length; i += 3) {
+        NSInteger value = 0;
+        NSInteger j;
+        for (j = i; j < (i + 3); j++) {
+            value <<= 8;
+            
+            if (j < length) {
+                value |= (0xFF & input[j]);
+            }
+        }
+        
+        NSInteger theIndex = (i / 3) * 4;
+        output[theIndex + 0] =                    table[(value >> 18) & 0x3F];
+        output[theIndex + 1] =                    table[(value >> 12) & 0x3F];
+        output[theIndex + 2] = (i + 1) < length ? table[(value >> 6)  & 0x3F] : '=';
+        output[theIndex + 3] = (i + 2) < length ? table[(value >> 0)  & 0x3F] : '=';
+    }
+    
+    return [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
+}
+
 
 // Returns this driver's capabilities. Since capabilities JSON Object represents
 // browser spec, it doesn't exactly match to native applications. This method

@@ -129,8 +129,37 @@ static NSDictionary *wireProtocolToAtomsStrategy =
            withArgs:[NSArray arrayWithObject:[self idDictionary]]];
 }
 
-- (void)click {    
-    [UIAutomationBridge tapView:webView_ atPoint:[self locationAsCGPoint]];    
+- (void)click {
+    
+    //[self executeAtom:webdriver::atoms::CLICK
+    //         withArgs:[NSArray arrayWithObject:[self idDictionary]]];
+    
+    
+    CGPoint elementlocation = [self locationAsCGPoint];
+    CGRect bounds = webView_.window.bounds;
+    NSLog(@"****** ElementLocation : %f, %f", elementlocation.x, elementlocation.y);
+    NSLog(@"****** webView Bounds : %f, %f", bounds.size.height, bounds.size.width);
+    
+    //if (!CGRectContainsPoint(bounds, elementlocation)){
+        //NSLog(@"****** Point is not in window, need to scroll *********");
+        //[UIAutomationBridge downView: webView_ atPoint:[self locationAsCGPoint]];
+        //[UIAutomationBridge upPoint:elementlocation];
+        //[UIAutomationBridge upView:webView_ atPoint:elementlocation];
+        if (elementlocation.y > bounds.size.height - 10){
+            NSLog(@"****** Element is not in window view, need to swipe UP *********");
+            [UIAutomationBridge swipeView:webView_ inDirection:PADirectionUp];            
+        }
+        
+        CFRunLoopRunInMode(kCFRunLoopDefaultMode, 2, false);
+        [UIAutomationBridge tapView:webView_ atPoint:[self locationAsCGPoint]];
+    //} else {
+        //NSLog(@"****** Point is in window *********");
+        //[UIAutomationBridge tapView:webView_ atPoint:[self locationAsCGPoint]];
+        
+    //}
+    
+        
+     
 }
 
 // Returns YES if the |UIWebView| is on the key window.
