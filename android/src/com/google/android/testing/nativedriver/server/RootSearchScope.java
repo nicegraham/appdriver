@@ -20,8 +20,10 @@ package com.google.android.testing.nativedriver.server;
 import com.google.common.collect.Lists;
 
 import android.view.View;
+import android.util.Log; 
 
 import org.openqa.selenium.WebDriverException;
+import android.view.WindowManagerGlobal;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -54,7 +56,38 @@ public class RootSearchScope implements ElementSearchScope {
     return Class.forName("android.view.WindowManagerImpl");
   }
 
+  protected View[] getTopLevelViewsAndroid17()
+  {
+    try {
+      Class<?> wmgClass = Class.forName("android.view.WindowManagerGlobal");
+      Field views = wmgClass.getDeclaredField("mViews");
+      views.setAccessible(true);
+      synchronized (wmgClass.getDeclaredMethod("getInstance").invoke(null)) {
+        return ((View[]) views.get(wmgClass.getDeclaredMethod("getInstance").invoke(null))).clone();
+      }
+    } catch (ClassNotFoundException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (NoSuchMethodException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (NoSuchFieldException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (IllegalArgumentException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (InvocationTargetException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (SecurityException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    } catch (IllegalAccessException exception) {
+      throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
+    }
+  }
+
   protected View[] getTopLevelViews() {
+    try {
+        return getTopLevelViewsAndroid17();
+    }catch (Exception e){
+        Log.i("appdriver getTopLevelViews()","Failed using android-17 method, falling back to original: "+e.toString());
+    }
     try {
       Class<?> wmClass = getWindowManagerImplClass();
       Object wm = wmClass.getDeclaredMethod("getDefault").invoke(null);
