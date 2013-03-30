@@ -24,7 +24,7 @@ limitations under the License.
     <mkdir dir="${build.dir}" />
   </target>
   <target name="classes-common" depends="directory">
-    <javac destdir="${class.dir}"
+    <javac target="1.6" destdir="${class.dir}"
 	   srcdir="${src.dir}"
 	   includes="${common.package}/**">
       <classpath>
@@ -36,7 +36,7 @@ limitations under the License.
     </javac>
   </target>
   <target name="classes-client" depends="directory,classes-common">
-    <javac destdir="${class.dir}"
+    <javac target="1.6" destdir="${class.dir}"
 	   srcdir="${src.dir}"
 	   includes="${client.package}/**">
       <classpath>
@@ -53,7 +53,7 @@ limitations under the License.
   </target>
 
   <target name="classes-server" depends="directory,classes-common">
-    <javac destdir="${class.dir}"
+    <javac target="1.6" destdir="${class.dir}"
 	   srcdir="${src.dir}"
 	   includes="${server.package}/**">
       <classpath>
