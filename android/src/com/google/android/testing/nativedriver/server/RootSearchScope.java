@@ -23,7 +23,6 @@ import android.view.View;
 import android.util.Log; 
 
 import org.openqa.selenium.WebDriverException;
-import android.view.WindowManagerGlobal;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -43,8 +42,8 @@ import javax.annotation.Nullable;
  */
 public class RootSearchScope implements ElementSearchScope {
   private static final String REFLECTION_ERROR_MESSAGE
-      = "Android NativeDriver only supports Android 2.2 (Froyo)."
-          + " Check your environment.";
+      = "Most of Android NativeDriver should work up to Android 4.2.2."
+          + " Apparently you found a situation that doesn't work.";
 
   private final ElementContext context;
 
@@ -60,10 +59,11 @@ public class RootSearchScope implements ElementSearchScope {
   {
     try {
       Class<?> wmgClass = Class.forName("android.view.WindowManagerGlobal");
+      Object wmg = wmgClass.getDeclaredMethod("getInstance").invoke(null);
       Field views = wmgClass.getDeclaredField("mViews");
       views.setAccessible(true);
-      synchronized (wmgClass.getDeclaredMethod("getInstance").invoke(null)) {
-        return ((View[]) views.get(wmgClass.getDeclaredMethod("getInstance").invoke(null))).clone();
+      synchronized (wmg) {
+        return ((View[]) views.get(wmg)).clone();
       }
     } catch (ClassNotFoundException exception) {
       throw new WebDriverException(REFLECTION_ERROR_MESSAGE, exception);
