@@ -1,6 +1,6 @@
 Android support of appdriver
 =
-  I use appium for iOS but appdriver for android. appium has android support, but it's sorta experimental and only supports android-17 right now. I need to test 2.3.x and 4.x. I added support for android-17.  Why am I using appium & appdriver at all? Because automating UI tests on Selenium-Grid using the selenium framework is probably the best & widely-supported open-source way to deal with automated UI tests. Also, it seems appium & appdriver are the best(only?) options for native iOS & Android apps to be connected to Selenium-Grid.
+  I use appium for iOS but appdriver for android. appium has android support, but it's sorta experimental and only supports android-17 right now. I need to test 2.3.x and 4.x. I added support for android-17.  Why am I using appium & appdriver at all? Because automating UI tests on Selenium-Grid using the selenium framework is probably the best & widely-supported open-source way to deal with automated UI tests with parallelism. Also, it seems appium & appdriver are the best(only?) options for native iOS & Android apps to be connected to Selenium-Grid.
 
 
 Other things I've added(python examples)
