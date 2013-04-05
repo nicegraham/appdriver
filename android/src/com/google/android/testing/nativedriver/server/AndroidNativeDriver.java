@@ -23,12 +23,21 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Surface;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.util.Base64;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.RandomAccessFile;
+
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -45,6 +54,8 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.ActionChainsGenerator;
 import org.openqa.selenium.interactions.DefaultActionChainsGenerator;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -64,7 +75,7 @@ import javax.annotation.Nullable;
  * @author Dezheng Xu
  */
 public class AndroidNativeDriver
-    implements WebDriver, Rotatable, HasTouchScreen, HasInputDevices {
+    implements WebDriver, Rotatable, HasTouchScreen, HasInputDevices, TakesScreenshot {
   private final ElementContext context;
   private SearchContext rootSearchContext;
 
@@ -436,5 +447,63 @@ public class AndroidNativeDriver
   @Override
   public ActionChainsGenerator actionsBuilder() {
     return new DefaultActionChainsGenerator(this);
+  }
+
+  @Override
+  public <X> X getScreenshotAs(OutputType<X> target)
+                  throws WebDriverException
+  {
+    if (target != OutputType.BASE64)
+      throw new UnsupportedOperationException(
+         "You must use getScreenShotAsBase64");
+
+    final String filename = "/sdcard/appdriver_screenshot.png";
+    //Credit: This screenshot stuff is 99% from the people at
+    //http://stackoverflow.com/questions/2661536/how-to-programatically-take-a-screenshot-on-android
+    //http://stackoverflow.com/questions/2339429/android-view-getdrawingcache-returns-null-only-null
+    Runnable myrunner = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            Bitmap bitmap;
+            View v1 = context.getActivities().current().getCurrentFocus().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            v1.layout(0, 0, v1.getWidth(), v1.getHeight());
+            v1.buildDrawingCache(true);
+            bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+            File file = new File(filename);
+            try{
+                file.createNewFile();
+                FileOutputStream ostream = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
+                ostream.close();
+            }
+            catch(Exception e){throw new WebDriverException(e.toString());}
+            try{
+                synchronized(this)
+                {
+                    this.notify();
+                }
+            }
+            catch(Exception e){ throw new WebDriverException(e.toString()); }
+        }
+    };
+    context.getActivities().current().runOnUiThread(myrunner);
+    try{
+        synchronized(myrunner)
+        {
+            myrunner.wait();
+        }
+    }
+    catch(Exception e){ throw new WebDriverException(e.toString()); }
+    try{
+        RandomAccessFile file = new RandomAccessFile(filename, "r");
+        byte[] filebytes = new byte[(int)file.length()];
+        file.read(filebytes);
+        return (X)Base64.encodeToString(filebytes,0);
+    }
+    catch(Exception e){ throw new WebDriverException(e.toString()); }
   }
 }
