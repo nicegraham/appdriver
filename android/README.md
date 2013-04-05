@@ -7,7 +7,7 @@ Other things I've added(python examples)
 =
  This didn't work before, now it does:
 
-    driver.find_element_by_tag_name() 
+    driver.find_element_by_tag_name()
 
 
 Also, note that the following still doesn't work:
@@ -24,7 +24,15 @@ Finally, since I'm using python I wrote a wrapper to send Android Native Keys:
 
 Look at the source of AndroidNativeKeys.py to see all possible buttons.
 
-__TODO__: I'm still trying to fix(or just redo) this:
+Also, this works now..
 
     driver.get_screenshot_as_base64()
+
+But it needs to create a temp file on the available sdcard so when you compile your app, along with the instrumentation line you add to AndroidManifest.xml be sure to add the following:
+
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+
+This is because accessing the view object to get a screenshot must happen
+on the UI thread. AFAIK, there is no straight-forward way to return data from the
+runOnUiThread(Runnable) so I have it writing the data to __/sdcard/appdriver_screenshot.png__ . After the Runnable object is done, I then read from that file, base64 encode it and return it to the WebDriver object.
 
