@@ -454,7 +454,7 @@ public class AndroidNativeDriver
                   throws WebDriverException
   {
     if (target != OutputType.BASE64)
-      throw new UnsupportedOperationException(
+      throw new WebDriverException(
          "You must use getScreenShotAsBase64");
 
     final String filename = "/sdcard/appdriver_screenshot.png";
