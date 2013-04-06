@@ -30,6 +30,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.FindsByTagName;
 import org.openqa.selenium.internal.FindsByClassName;
 import org.openqa.selenium.internal.FindsById;
 import org.openqa.selenium.support.ui.TimeoutException;
@@ -190,8 +191,26 @@ public class ElementFinder {
     }
   }
 
+  private static class ByTagNameFilterCondition implements FilterCondition {
+    private final String tagName;
+
+    public ByTagNameFilterCondition(String tagName) {
+      this.tagName = tagName;
+    }
+
+    @Override
+    public boolean apply(AndroidNativeElement input) {
+      return tagName.equals(input.getTagName());
+    }
+
+    @Override
+    public String notFoundExceptionMessage() {
+      return "Could not find element with tag name: '" + tagName + "'.";
+    }
+  }
+
   private class SearchContextImpl
-      implements SearchContext, FindsById, FindsByText, FindsByClassName {
+      implements SearchContext, FindsById, FindsByText, FindsByClassName, FindsByTagName{
     private final ElementSearchScope scope;
 
     private SearchContextImpl(ElementSearchScope scope) {
@@ -337,6 +356,20 @@ public class ElementFinder {
     public List<WebElement> findElementsByClassName(String using) {
       return addElementsFromHierarchy(Lists.<WebElement>newArrayList(),
           scope.getChildren(), new ByClassNameFilterCondition(using),
+          Integer.MAX_VALUE /* maxResults */);
+    }
+
+    @Override
+    public WebElement findElementByTagName(String using) {
+      Preconditions.checkNotNull(using);
+      FilterCondition filter = new ByTagNameFilterCondition(using);
+      return findElementFromHierarchy(scope.getChildren(), filter);
+    }
+
+    @Override
+    public List<WebElement> findElementsByTagName(String using) {
+      return addElementsFromHierarchy(Lists.<WebElement>newArrayList(),
+          scope.getChildren(), new ByTagNameFilterCondition(using),
           Integer.MAX_VALUE /* maxResults */);
     }
   }
