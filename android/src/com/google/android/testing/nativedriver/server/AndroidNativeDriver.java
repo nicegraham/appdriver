@@ -33,6 +33,7 @@ import android.view.Surface;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -454,10 +455,12 @@ public class AndroidNativeDriver
                   throws WebDriverException
   {
     if (target != OutputType.BASE64)
-      throw new UnsupportedOperationException(
+      throw new WebDriverException(
          "You must use getScreenShotAsBase64");
 
     final String filename = "/sdcard/appdriver_screenshot.png";
+
+ 
     //Credit: This screenshot stuff is 99% from the people at
     //http://stackoverflow.com/questions/2661536/how-to-programatically-take-a-screenshot-on-android
     //http://stackoverflow.com/questions/2339429/android-view-getdrawingcache-returns-null-only-null
@@ -467,12 +470,12 @@ public class AndroidNativeDriver
         public void run()
         {
             Bitmap bitmap;
-            View v1 = context.getActivities().current().getCurrentFocus().getRootView();
-            v1.setDrawingCacheEnabled(true);
-            v1.layout(0, 0, v1.getWidth(), v1.getHeight());
-            v1.buildDrawingCache(true);
-            bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-            v1.setDrawingCacheEnabled(false);
+            View rootview = context.getActivities().current().getWindow().getDecorView().getRootView();
+            rootview.setDrawingCacheEnabled(true);
+            rootview.layout(0, 0, rootview.getWidth(), rootview.getHeight());
+            rootview.buildDrawingCache(true);
+            bitmap = Bitmap.createBitmap(rootview.getDrawingCache());
+            rootview.setDrawingCacheEnabled(false);
             File file = new File(filename);
             try{
                 file.createNewFile();
@@ -480,14 +483,18 @@ public class AndroidNativeDriver
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
                 ostream.close();
             }
-            catch(Exception e){throw new WebDriverException(e.toString());}
+            catch(Exception e){
+              Log.i("appdriver",e.toString());
+              throw new WebDriverException(e.toString());}
             try{
                 synchronized(this)
                 {
                     this.notify();
                 }
             }
-            catch(Exception e){ throw new WebDriverException(e.toString()); }
+            catch(Exception e){
+             Log.i("appdriver",e.toString());
+             throw new WebDriverException(e.toString()); }
         }
     };
     context.getActivities().current().runOnUiThread(myrunner);
@@ -497,13 +504,17 @@ public class AndroidNativeDriver
             myrunner.wait();
         }
     }
-    catch(Exception e){ throw new WebDriverException(e.toString()); }
+    catch(Exception e){ 
+     Log.i("appdriver",e.toString());
+     throw new WebDriverException(e.toString()); }
     try{
         RandomAccessFile file = new RandomAccessFile(filename, "r");
         byte[] filebytes = new byte[(int)file.length()];
         file.read(filebytes);
         return (X)Base64.encodeToString(filebytes,0);
     }
-    catch(Exception e){ throw new WebDriverException(e.toString()); }
+    catch(Exception e){ 
+     Log.i("appdriver",e.toString());
+     throw new WebDriverException(e.toString()); }
   }
 }

@@ -200,7 +200,7 @@ public class ElementFinder {
 
     @Override
     public boolean apply(AndroidNativeElement input) {
-      return tagName.equals(input.getTagName());
+      return tagName.isEmpty() || tagName.equals(input.getTagName());
     }
 
     @Override
