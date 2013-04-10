@@ -35,10 +35,7 @@ import android.view.View;
 import android.util.Base64;
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.RandomAccessFile;
-
+import java.io.ByteArrayOutputStream;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -79,6 +76,7 @@ public class AndroidNativeDriver
     implements WebDriver, Rotatable, HasTouchScreen, HasInputDevices, TakesScreenshot {
   private final ElementContext context;
   private SearchContext rootSearchContext;
+  private ByteArrayOutputStream baostream;
 
   /**
    * Allows configuration of this instance of the driver. Only
@@ -472,16 +470,15 @@ public class AndroidNativeDriver
             Bitmap bitmap;
             View rootview = context.getActivities().current().getWindow().getDecorView().getRootView();
             rootview.setDrawingCacheEnabled(true);
-            rootview.layout(0, 0, rootview.getWidth(), rootview.getHeight());
             rootview.buildDrawingCache(true);
+            rootview.layout(0, 0, rootview.getWidth(), rootview.getHeight());
             bitmap = Bitmap.createBitmap(rootview.getDrawingCache());
-            rootview.setDrawingCacheEnabled(false);
-            File file = new File(filename);
+            rootview.buildDrawingCache(false);
+            rootview.setDrawingCacheEnabled(false);        
             try{
-                file.createNewFile();
-                FileOutputStream ostream = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
-                ostream.close();
+		baostream = new ByteArrayOutputStream(
+                bitmap.getRowBytes()*bitmap.getHeight());
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baostream);
             }
             catch(Exception e){
               Log.i("appdriver",e.toString());
@@ -507,12 +504,11 @@ public class AndroidNativeDriver
     catch(Exception e){ 
      Log.i("appdriver",e.toString());
      throw new WebDriverException(e.toString()); }
-    try{
-        RandomAccessFile file = new RandomAccessFile(filename, "r");
-        byte[] filebytes = new byte[(int)file.length()];
-        file.read(filebytes);
-        return (X)Base64.encodeToString(filebytes,0);
-    }
+    try{        
+        byte[] imagebytes = baostream.toByteArray();
+        baostream.close();
+        return (X)Base64.encodeToString(imagebytes,0);
+       }
     catch(Exception e){ 
      Log.i("appdriver",e.toString());
      throw new WebDriverException(e.toString()); }
