@@ -11,7 +11,7 @@ Then make sure your app's AndroidManifest.xml has this added:
 
     <instrumentation android:targetPackage="com.yourcompany.appname"
            android:name="com.google.android.testing.nativedriver.server.ServerInstrumentation" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
 
 NOTE: That targetPackage must be equal to your app's package name that's already in AndroidManifest.xml.
 
@@ -54,15 +54,4 @@ And screenshot now works:
 
     driver.get_screenshot_as_base64()
 
-But it needs to create a temp file on the available sdcard so when the app is compiled, along with the instrumentation line in AndroidManifest.xml be sure to add: 
 
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
-
-This is because accessing the view object to get a screenshot must happen
-on the UI thread. AFAIK, there is no straight-forward way to return data from the
-runOnUiThread(Runnable) so the image is first written to __/sdcard/appdriver_screenshot.png__ . After the Runnable object is done, the image is then read back into memory and returned to the WebDriver as a base64 encoded string. e.g.
-
-    import base64
-    fd = open("whatmyapplookslike.png","w")
-    fd.write(base64.decodestring(driver.get_screenshot_as_base64()))
-    fd.close()
