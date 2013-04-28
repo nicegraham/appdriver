@@ -23,7 +23,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -31,9 +30,15 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Surface;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.view.View;
 import android.util.Base64;
 import android.util.Log;
+import android.util.DisplayMetrics;
+import android.widget.ScrollView;
+import android.content.Context;
+import android.os.SystemClock;
+import android.view.MotionEvent;
 
 import java.io.ByteArrayOutputStream;
 
@@ -54,11 +59,13 @@ import org.openqa.selenium.interactions.ActionChainsGenerator;
 import org.openqa.selenium.interactions.DefaultActionChainsGenerator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.JavascriptExecutor; 
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -73,7 +80,8 @@ import javax.annotation.Nullable;
  * @author Dezheng Xu
  */
 public class AndroidNativeDriver
-    implements WebDriver, Rotatable, HasTouchScreen, HasInputDevices, TakesScreenshot {
+    implements WebDriver, Rotatable, HasTouchScreen, HasInputDevices, 
+               TakesScreenshot, JavascriptExecutor {
   private final ElementContext context;
   private SearchContext rootSearchContext;
   private ByteArrayOutputStream baostream;
@@ -124,6 +132,9 @@ public class AndroidNativeDriver
       throw new UnsupportedOperationException();
     }
   }
+
+
+
 
   /**
    * Allows configuration of timeout settings of this instance of the driver.
@@ -184,6 +195,7 @@ public class AndroidNativeDriver
           "The refresh operation does not exist in native Android app.");
     }
   }
+
 
   public AndroidNativeDriver(ElementContext context) {
     this.context = context;
@@ -449,6 +461,141 @@ public class AndroidNativeDriver
   }
 
   @Override
+  public boolean isJavascriptEnabled() {
+      return true;
+  }
+
+  @Override 
+  public Object executeAsyncScript(String s, Object... args) {
+    throw new UnsupportedOperationException("Only the normal executeScript() works. Not async.");
+  }
+
+  @Override 
+  public Object executeScript(String action, Object... args) {
+    String result = "";
+    if(action.equals("systeminfo"))
+    {
+        result += "{'BOARD':'"+android.os.Build.BOARD+"','";
+        result += "BOOTLOADER':'"+android.os.Build.BOOTLOADER+"','";
+        result += "CPU_ABI':'"+android.os.Build.CPU_ABI+"','";
+        result += "CPU_ABI2':'"+android.os.Build.CPU_ABI2+"','";
+        result += "HARDWARE':'"+android.os.Build.HARDWARE+"'}";
+        return result;
+    }
+    if(action.equals("getscreeninfo"))
+        return getscreeninfo();  
+    if(action.equals("fling"))
+        return fling(args[0],args[1]);
+    try {
+    if(action.equals("swipe"))
+        return swipe(args[0],args[1],args[2],args[3]);
+    if(action.equals("tap"))
+        return tap(args[0],args[1]);
+    if(action.equals("taphold"))
+        return tapaction(args[0],args[1],MotionEvent.ACTION_DOWN);
+    if(action.equals("tapcancel"))
+        return tapaction(args[0],args[1],MotionEvent.ACTION_CANCEL);
+    if(action.equals("tapmoveto"))
+        return tapaction(args[0],args[1],MotionEvent.ACTION_MOVE);
+    if(action.equals("taprelease"))
+        return tapaction(args[0],args[1],MotionEvent.ACTION_UP);
+    if(action.equals("tapscroll"))
+        return tapaction(args[0],args[1],MotionEvent.ACTION_SCROLL);
+    } catch (Exception e) {
+      throw new WebDriverException("You can only tap parts of your app."+
+        " Hitting the notification-bar or onscreen keyboard causes INJECT_EVENT error: "+e.toString());
+    }
+
+    return result;
+  }
+
+  public String getscreeninfo() {
+      String info = ""; 
+      DisplayMetrics dm = new DisplayMetrics();
+      context.getActivities().current()
+          .getWindowManager()
+          .getDefaultDisplay()
+          .getMetrics(dm);
+      return "{'heightPixels':'"+dm.heightPixels
+          +"','widthPixels':'"+dm.widthPixels
+          +"','density':'"+dm.density
+          +"','scaledDensity':'"+dm.scaledDensity
+          +"','xdpi':'"+dm.xdpi
+          +"','ydpi':'"+dm.ydpi+"'}";
+  }
+
+  public String fling(Object arg1, Object arg2)
+  {
+    int viewid = Integer.parseInt(arg1.toString());
+    int velocity = Integer.parseInt(arg2.toString());
+    View rootview = context.getActivities().current()
+    .getWindow().getDecorView().getRootView();
+    ((ScrollView)(rootview.findViewById(viewid))).fling(velocity);
+    return "OK";
+  }
+
+  public String tap(Object arg1, Object arg2)
+  {
+    float x = Float.parseFloat(arg1.toString());
+    float y = Float.parseFloat(arg2.toString());
+    long uptimemillis = SystemClock.uptimeMillis();
+    MotionEvent mev;
+
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,
+            MotionEvent.ACTION_DOWN,x,y,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,
+            MotionEvent.ACTION_UP,x,y,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+
+    return "OK";
+  }
+
+  public String tapaction(Object arg1, Object arg2, int actiontype)
+  {
+    float x = Float.parseFloat(arg1.toString());
+    float y = Float.parseFloat(arg2.toString());
+    long uptimemillis = SystemClock.uptimeMillis();
+    MotionEvent mev;
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,actiontype,x,y,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+    return "OK";
+  }
+
+  public String swipe(Object arg1, Object arg2, Object arg3, Object arg4)
+  {
+    float x1 = Float.parseFloat(arg1.toString());
+    float y1 = Float.parseFloat(arg2.toString());
+    float x2 = Float.parseFloat(arg3.toString());
+    float y2 = Float.parseFloat(arg4.toString());
+    long uptimemillis;
+    MotionEvent mev;
+
+    uptimemillis = SystemClock.uptimeMillis();
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,
+            MotionEvent.ACTION_DOWN,x1,y1,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+
+    uptimemillis = SystemClock.uptimeMillis();
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,
+            MotionEvent.ACTION_MOVE,x2,y2,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+ 
+    uptimemillis = SystemClock.uptimeMillis();
+    mev = MotionEvent.obtain(uptimemillis,uptimemillis,
+            MotionEvent.ACTION_UP,x2,y2,0);
+    ServerInstrumentation.getInstance().sendPointerSync(mev);
+    ServerInstrumentation.getInstance().waitForIdleSync();
+
+    return "OK";
+  }
+
+  @Override
   public <X> X getScreenshotAs(OutputType<X> target)
                   throws WebDriverException
   {
@@ -456,9 +603,6 @@ public class AndroidNativeDriver
       throw new WebDriverException(
          "You must use getScreenShotAsBase64");
 
-    final String filename = "/sdcard/appdriver_screenshot.png";
-
- 
     //Credit: This screenshot stuff is 99% from the people at
     //http://stackoverflow.com/questions/2661536/how-to-programatically-take-a-screenshot-on-android
     //http://stackoverflow.com/questions/2339429/android-view-getdrawingcache-returns-null-only-null
@@ -476,7 +620,7 @@ public class AndroidNativeDriver
             rootview.buildDrawingCache(false);
             rootview.setDrawingCacheEnabled(false);        
             try{
-		baostream = new ByteArrayOutputStream(
+                baostream = new ByteArrayOutputStream(
                 bitmap.getRowBytes()*bitmap.getHeight());
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, baostream);
             }
