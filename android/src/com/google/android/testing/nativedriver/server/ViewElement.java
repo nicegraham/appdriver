@@ -188,6 +188,15 @@ public class ViewElement<V extends View>
     return !view.hasWindowFocus();
   }
 
+  @Nullable
+  @Override
+  public String getAttribute(String name) {
+    if(name.equals("androidViewId"))
+      return ""+getAndroidId();
+
+    return null;
+  }
+ 
   @Override
   public void click() {
     // View.isClickable() check is not needed since the actual View which
@@ -266,7 +275,9 @@ public class ViewElement<V extends View>
     // "ScrollIntoScreenIfNeeded" case in another way. According to the
     // JavaDoc, "This method should cause the element to be scrolled into
     // view".
-    throw new UnsupportedOperationException();
+    // throw new UnsupportedOperationException();
+    scrollIntoScreenIfNeeded();
+    return getLocation();
   }
 
   private void waitUntilIsDisplayed() {
@@ -297,6 +308,7 @@ public class ViewElement<V extends View>
     int right = left + getViewWidth();
     int bottom = top + getViewHeight();
     requestRectangleOnScreen(new Rect(left, top, right, bottom));
+    ServerInstrumentation.getInstance().waitForIdleSync();
   }
 
   protected int getViewWidth() {
