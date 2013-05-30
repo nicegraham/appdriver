@@ -29,6 +29,16 @@ Install the app into the emulator or physical device and you should be ready to 
 Port 54129 will now be ready for selenium requests to physical device or emulator. Note that emulator binds
 localhost so you'll need some kinda socat/iptabes tool to do port-forwarding and make an emulator reachable from another machine.
 
+__UPDATE__ 2013-05-29
+
+    >>> driver.find_element('id','my_listview').get_attribute("ListView:getAdapter:getCount")
+    u'17'
+    
+ Why? Apparently in Android if a ListView object has more items than can be displayed on screen, the views are "deleted" such that the WindowManager doesn't have them in the "mViews" variable. For testing, this means you will not be able to find it by any means whatsoever. If that's true, then how do you know that what you're looking for is off-screen and you need to scroll to it? With this new attribute, if you see that the number returned is bigger than the count you see using selenium's find_elements_by_* commands, you know you need to scroll down/up to see the rest.
+ And of course if you try this on a view that cannot be cast into a ListView, an exception will be thrown.
+
+
+
 __UPDATE__ 2013-04-28
 
 This doesn't work:
